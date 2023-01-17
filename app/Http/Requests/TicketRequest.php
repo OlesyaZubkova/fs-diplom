@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CinemaHallRequest extends FormRequest
+class TicketRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,7 @@ class CinemaHallRequest extends FormRequest
     public function rules()
     {
         return [
-            'hall_title' => ['required', 'string'],
-            'row' => ['required', 'integer'],
-            'chair' => ['required', 'integer'],
-            'price_standard' => ['required', 'integer'],
-            'price_vip' => ['required', 'integer'],
-            'free' => ['required', 'boolean'],
+            'session_id' => ['required', 'array'],
         ];
     }
 }

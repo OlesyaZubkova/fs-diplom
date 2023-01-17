@@ -35,7 +35,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Ticket::create($request->validated());
     }
 
     /**
@@ -46,19 +46,9 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return Ticket::findOrFail($ticket);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ticket $ticket)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

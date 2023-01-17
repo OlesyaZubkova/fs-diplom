@@ -15,6 +15,7 @@ class CreateCinemaHallsTable extends Migration
             $table->integer('chair');
             $table->integer('price_standard');
             $table->integer('price_vip');
+            $table->boolean('free');
             $table->timestamps();
         });
     }

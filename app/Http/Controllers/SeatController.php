@@ -14,7 +14,7 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        return Seat::all();
     }
 
     /**
@@ -48,7 +48,8 @@ class SeatController extends Controller
      */
     public function update(Request $request, Seat $seat)
     {
-        //
+        $seat->fill($request->validated());
+        return $seat->save();
     }
 
     /**

@@ -14,7 +14,7 @@ class CinemaHallController extends Controller
      */
     public function index()
     {
-        //
+        return CinemaHall::all();
     }
 
     /**
