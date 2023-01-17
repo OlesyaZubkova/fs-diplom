@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->foreign('session_id');
+            $table->integer('session_id');
             $table->timestamps();
         });
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketRequest;
 use App\Models\Ticket;
-use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -33,7 +33,7 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketRequest $request)
     {
         return Ticket::create($request->validated());
     }
@@ -46,7 +46,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        return Ticket::findOrFail($ticket);
+        return Ticket::findOfFail($id);
     }
 
 
@@ -57,9 +57,10 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(TicketRequest $request, Ticket $ticket)
     {
-        //
+        $ticket->fill($request->validated());
+        return $ticket->save();
     }
 
     /**
