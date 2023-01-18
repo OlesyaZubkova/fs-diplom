@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Response;
 
 class TicketRequest extends FormRequest
 {
@@ -26,5 +29,12 @@ class TicketRequest extends FormRequest
         return [
             'session_id' => ['required', 'array'],
         ];
+    }
+
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new HttpResponseException(
+            response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY)
+        );
     }
 }
