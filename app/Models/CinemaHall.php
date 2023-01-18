@@ -19,11 +19,11 @@ class CinemaHall extends Model
 
     public function sessions(): hasMany
     {
-        return $this->hasMany(Session::class, 'cinema_id', 'id');
+        return $this->hasMany(Session::class, 'cinema_hall_id', 'id');
     }
 
     public function chairs(): hasMany
     {
-        return $this->hasMany(Seat::class, 'cinema_id', 'id');
+        return $this->hasMany(Seat::class, 'cinema_hall_id', 'id');
     }
 }
