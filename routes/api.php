@@ -14,8 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
+
+*/
+
+Route::post('/tokens/create', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
+    Route::apiResource('/cinemaHall', \App\Http\Controllers\CinemaHallController::class);
+});
