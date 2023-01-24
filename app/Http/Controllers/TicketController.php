@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TicketRequest;
+use App\Models\Seat;
 use App\Models\Ticket;
+use Illuminate\Http\Response;
 
 class TicketController extends Controller
 {
@@ -44,9 +46,9 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function show($id)
     {
-        return Ticket::findOfFail($id);
+        return Ticket::findOrFail($id);
     }
 
 

@@ -27,6 +27,7 @@ class SeatRequest extends FormRequest
     public function rules()
     {
         return [
+            'seats' => ['required', 'array'],
             'number' => ['required', 'integer'],
             'status' => ['required', 'string'],
         ];

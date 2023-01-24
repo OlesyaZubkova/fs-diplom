@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SessionRequest;
 use App\Models\Session;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class SessionController extends Controller
 {
@@ -62,7 +62,7 @@ class SessionController extends Controller
     public function destroy(Session $session)
     {
         if ($session->delete()) {
-            return response(null, Responce::HTTP_NO_CONTENT);
+            return response(null, Response::HTTP_NO_CONTENT);
         }
         return null;
     }

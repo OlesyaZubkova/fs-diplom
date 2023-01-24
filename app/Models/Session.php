@@ -18,7 +18,7 @@ class Session extends Model
         'created_up', 'updated_at',
     ];
 
-    public function cinema_hall(): BelongsTo
+    public function cinemaHall(): BelongsTo
     {
         return $this->belongsTo(CinemaHall::class, 'cinema_hall_id');
     }
@@ -30,6 +30,6 @@ class Session extends Model
 
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class, 'ticket_id', 'id');
+        return $this->hasMany(Ticket::class, 'session_id', 'id');
     }
 }

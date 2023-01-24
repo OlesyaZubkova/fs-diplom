@@ -23,6 +23,7 @@ Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
 
 */
 
+/*
 Route::post('/tokens/create', [\App\Http\Controllers\ApiTokenController::class, 'createToken']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -32,3 +33,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
     Route::apiResource('/cinemaHall', \App\Http\Controllers\CinemaHallController::class);
 });
+*/
+
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::apiResource('/cinemaHall', \App\Http\Controllers\CinemaHallController::class);
+Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
+Route::apiResource('/session', \App\Http\Controllers\SessionController::class);
+Route::apiResource('/ticket', \App\Http\Controllers\TicketController::class);
+
+Route::apiResource('/info', \App\Http\Controllers\CommonController::class);

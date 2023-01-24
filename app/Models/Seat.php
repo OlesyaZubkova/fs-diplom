@@ -18,7 +18,7 @@ class Seat extends Model
         'created_up', 'updated_at',
     ];
 
-    public function cinema_hall(): BelongsTo
+    public function cinemaHall(): BelongsTo
     {
         return $this->belongsTo(CinemaHall::class, 'cinema_hall_id');
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FilmRequest;
 use App\Models\Film;
+use Illuminate\Http\Response;
 
 class FilmController extends Controller
 {
@@ -61,7 +62,7 @@ class FilmController extends Controller
     public function destroy(Film $film)
     {
         if ($film->delete()) {
-            return response(null, Responce::HTTP_NO_CONTENT);
+            return response(null, Response::HTTP_NO_CONTENT);
         }
         return null;
     }

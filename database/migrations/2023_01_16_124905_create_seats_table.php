@@ -18,6 +18,8 @@ class CreateSeatsTable extends Migration
             $table->integer('number');
             $table->string('status');
             $table->integer('cinema_hall_id');
+            $table->integer('ticket_id');
+            $table->integer('seat_id');
             $table->timestamps();
         });
     }
