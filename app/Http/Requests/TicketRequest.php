@@ -28,6 +28,8 @@ class TicketRequest extends FormRequest
     {
         return [
             'session_id' => ['required', 'integer'],
+            'seats' => ['required', 'array'],
+            'seats.*' => ['required', 'integer']
         ];
     }
 

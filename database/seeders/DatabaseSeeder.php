@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             FilmSeeder::class,
             CinemaHallSeeder::class,
             SessionSeeder::class,
+            TicketSeeder::class,
+            AdminSeeder::class,
+            SeatSeeder::class
         ]);
     }
 }

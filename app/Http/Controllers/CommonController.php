@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CinemaHall;
 use App\Models\Film;
 use App\Models\Session;
+use App\Models\Seat;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,51 +14,23 @@ use Illuminate\Database\Eloquent\Builder;
 class CommonController extends Controller
 {
 
-
     public function index()
     {
+        // доступные для посещения кинозалы
 
-        $cinemaHalls = CinemaHall::with('sessions')->where('free', 1)->select('id', 'hall_title')->get();
+        $cinemaHalls = CinemaHall::with('sessions')
+            ->where('free', 1)
+            ->select('id', 'hall_title')
+            ->get();
 
-
-        // Все фильмы в открытых залах
+        // доступные к просмотру фильмы
         $filmId = Session::whereHas('cinemaHall', function (Builder $query) {
             $query->where('free', 1);
         })->pluck('film_id');
+
         $films = Film::all()->whereIn('id', $filmId);
 
-        return ["cinemaHalls" => $cinemaHalls, "films" => $films];
-
-
-
-//testing
-//        $films = DB::table('films')->pluck('title')->all();
-//        var_dump($films);
-
-//        $films = DB::table('films')->select('title', 'duration')->get();
-//        var_dump($films);
-//        echo $films;
-
-//        $films = DB::table('films')->where('title', '=', 'film 1')->get();
-//        echo $films;
-
-        /*
-        $films = DB::table('films')
-            ->where('title', '=', 'Alice in Wonderland')
-            ->orWhere('country', '=', 'Russia')
-            ->get();
-        echo $films;
-
-        */
-
-        /*
-
-        $film = DB::table('films')->where('title', 'film 2')->first();
-
-        var_dump($film->title);
-
-        */
-
+        return ["films" => $films, "cinemaHalls" => $cinemaHalls];
 
         /*
         $films = DB::table('films')->orderBy('title')->chunk(1, function ($films) {
@@ -66,17 +40,31 @@ class CommonController extends Controller
         });
         */
 
-//        $cinemahalls = DB::table('cinema_halls')->get();
-//
-//        foreach ($cinemahalls as $cinemahall)
-//        {
-//            var_dump($cinemahall->chair) . PHP_EOL;
-//        }
     }
 
+    // информация о сеансе
 
+    public function testing($sessionId)
+    {
+        $session = Session::where('sessions.id', $sessionId)
+            ->join('cinema_halls', 'sessions.cinema_hall_id', '=', 'cinema_halls.id')
+            ->join('films', 'sessions.film_id', '=', 'films.id')
+            ->select(
+                'sessions.id',
+                'sessions.time',
+                'films.title',
+                'film_id',
+                'sessions.cinema_hall_id',
+                'cinema_halls.hall_title',
+                'cinema_halls.row',
+                'cinema_halls.chair',
+                'cinema_halls.price_standard',
+                'cinema_halls.price_vip',
+            )->get();
 
+        return ["session" => $session];
 
+    }
 
 }
 

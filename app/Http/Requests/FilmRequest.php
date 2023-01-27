@@ -31,7 +31,7 @@ class FilmRequest extends FormRequest
             'description' => ['required', 'string'],
             'duration' => ['required', 'integer'],
             'country' => ['required', 'string'],
-            'poster' => ['required', 'string'],
+            'poster' => ['image'],
         ];
     }
 

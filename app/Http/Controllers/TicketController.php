@@ -9,25 +9,6 @@ use Illuminate\Http\Response;
 
 class TicketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +18,13 @@ class TicketController extends Controller
      */
     public function store(TicketRequest $request)
     {
-        return Ticket::create($request->validated());
+        $ticket = Ticket::create($request->validated());
+        foreach ($request->validated()['seats'] as $seatId)
+        {
+            $seat = Seat::findOrFail($seatId);
+            $ticket->seats()->save($seat);
+        }
+        return response($ticket->whereId($ticket->id)->with('session')->with('seats')->first(), 201);
     }
 
     /**
@@ -48,31 +35,6 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        return Ticket::findOrFail($id);
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function update(TicketRequest $request, Ticket $ticket)
-    {
-        $ticket->fill($request->validated());
-        return $ticket->save();
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Ticket $ticket)
-    {
-        //
+        return Ticket::whereId($id)->with('session')->with('seats')->first();
     }
 }
