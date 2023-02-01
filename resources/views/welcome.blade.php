@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="{{('css/app.css')}}" rel="stylesheet" type="text/css">
+    <title>ИдёмВКино</title>
+    <link href="{{mix('css/normalize.css')}}" rel="stylesheet">
+    <link href="{{mix('css/styles.css')}}" rel="stylesheet">
 </head>
 <body>
-    <h2 style="text-align: center"> Title </h2>
     <div id="root"></div>
-    <script src="{{('js/app.js')}}"></script>
+    <script src="{{mix('js/index.js')}}"></script>
 </body>
 </html>
