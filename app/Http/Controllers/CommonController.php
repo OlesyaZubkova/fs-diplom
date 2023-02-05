@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 class CommonController extends Controller
 {
 
-    public function index()
+    public function calendar()
     {
         // доступные для посещения кинозалы
 
@@ -32,19 +32,11 @@ class CommonController extends Controller
 
         return ["films" => $films, "cinemaHalls" => $cinemaHalls];
 
-        /*
-        $films = DB::table('films')->orderBy('title')->chunk(1, function ($films) {
-            foreach ($films as $film) {
-                var_dump($film->title);
-            }
-        });
-        */
-
     }
 
     // информация о сеансе
 
-    public function testing($sessionId)
+    public function seatSelect($sessionId)
     {
         $session = Session::where('sessions.id', $sessionId)
             ->join('cinema_halls', 'sessions.cinema_hall_id', '=', 'cinema_halls.id')
@@ -53,16 +45,28 @@ class CommonController extends Controller
                 'sessions.id',
                 'sessions.time',
                 'films.title',
-                'film_id',
+//                'film_id',
                 'sessions.cinema_hall_id',
                 'cinema_halls.hall_title',
                 'cinema_halls.row',
-                'cinema_halls.chair',
+//                'cinema_halls.chair',
                 'cinema_halls.price_standard',
                 'cinema_halls.price_vip',
             )->get();
 
-        return ["session" => $session];
+        $tickets = Seat::has('tickets')->whereHas('tickets', function(Builder $query) use ($sessionId) {
+            $query->where('session_id', $sessionId);
+        })->get();
+
+        $seats = Seat::where('cinema_hall_id', $session->first()->cinema_hall_id)->select('id', 'number', 'status')->get();
+
+        foreach ($seats as $seat) {
+            if ($tickets->contains($seat)) {
+                $seat->status = 'sold';
+            }
+        }
+
+        return ["session" => $session, "seats" => $seats];
 
     }
 

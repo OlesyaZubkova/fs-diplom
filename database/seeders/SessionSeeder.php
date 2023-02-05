@@ -17,19 +17,19 @@ class SessionSeeder extends Seeder
     public function run()
     {
         DB::table('sessions')->insert([
-            'time' => Carbon::now()->addDays(1),
+            'time' => '10:20',
             'cinema_hall_id' => 1,
             'film_id' => 2,
         ]);
 
         DB::table('sessions')->insert([
-            'time' => Carbon::now()->addDays(3),
+            'time' => '14:10',
             'cinema_hall_id' => 3,
             'film_id' => 1,
         ]);
 
         DB::table('sessions')->insert([
-            'time' => Carbon::now()->addHour(),
+            'time' => '18:40',
             'cinema_hall_id' => 2,
             'film_id' => 3,
         ]);

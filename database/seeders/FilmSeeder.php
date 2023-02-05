@@ -20,7 +20,7 @@ class FilmSeeder extends Seeder
             'description' => 'Две сотни лет назад малороссийские хутора разоряла шайка нехристей-ляхов во главе с могущественным колдуном.',
             'duration' => 130,
             'country' => 'США',
-            'poster' => 'poster'
+            'poster' => 'images/poster1.jpg'
         ]);
 
         DB::table('films')->insert([
@@ -28,7 +28,7 @@ class FilmSeeder extends Seeder
             'description' => '20 тысяч лет назад Земля была холодным и неуютным местом, в котором смерть подстерегала человека на каждом шагу.',
             'duration' => 96,
             'country' => 'Франция',
-            'poster' => 'poster2'
+            'poster' => 'images/poster2.jpg'
         ]);
 
         DB::table('films')->insert([
@@ -36,7 +36,7 @@ class FilmSeeder extends Seeder
             'description' => 'Самые опасные хищники Вселенной, прибыв из глубин космоса, высаживаются на улицах маленького городка, чтобы начать свою кровавую охоту. Генетически модернизировав себя с помощью ДНК других видов, охотники стали ещё сильнее, умнее и беспощаднее.',
             'duration' => 101,
             'country' => 'Канада, США',
-            'poster' => 'poster3'
+            'poster' => 'images/poster3.jpg'
         ]);
     }
 }

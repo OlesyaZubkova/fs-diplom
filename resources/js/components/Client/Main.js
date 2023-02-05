@@ -1,16 +1,14 @@
 import Header from './Header';
 import Navigate from "./Navigation/nav";
-import Movie from "./MovieCard/movie";
+import MovieCard from "./MovieCard";
 
-function Main()
+export default function Main()
 {
     return (
         <>
             <Header/>
             <Navigate/>
-            <Movie/>
+            <MovieCard/>
         </>
     );
 }
-
-export default Main;
