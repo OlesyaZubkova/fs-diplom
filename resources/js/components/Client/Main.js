@@ -1,14 +1,15 @@
 import Header from './Header';
 import Navigate from "./Navigation/nav";
-import MovieCard from "./MovieCard";
 
-export default function Main()
+export default function Main(props)
 {
     return (
         <>
             <Header/>
-            <Navigate/>
-            <MovieCard/>
+            {props.nav && <Navigate/>}
+            <main>
+                {props.children}
+            </main>
         </>
     );
 }

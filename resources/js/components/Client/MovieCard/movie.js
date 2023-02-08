@@ -9,16 +9,16 @@ function Movie(props)
     const movieHalls = cinemaHalls.filter((cinemaHall) => cinemaHall.sessions.find((session) => +session.film_id === id));
 
     return (
-            <section className="movie">
-                <MovieInfo id={id}/>
-                {movieHalls.map((cinemaHall) =>
-                    <MovieHall
-                        cinemaHallId={cinemaHall.id}
-                        filmId={id}
-                        key={cinemaHall.id}
-                    />
-                )}
-            </section>
+        <section className="movie">
+            <MovieInfo id={id}/>
+            {movieHalls.map((cinemaHall) =>
+                <MovieHall
+                    cinemaHallId={cinemaHall.id}
+                    filmId={id}
+                    key={cinemaHall.id}
+                />
+            )}
+        </section>
     );
 }
 

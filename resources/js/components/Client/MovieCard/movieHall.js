@@ -10,7 +10,7 @@ export default function MovieHall(props)
 
     return (
         <div className="movie-seances__hall">
-            <h3 className="movie-seances__hall-title">{cinemaHall.name}</h3>
+            <h3 className="movie-seances__hall-title">{cinemaHall.hall_title}</h3>
             <ul className="movie-seances__list">
                 {cinemaHallSeances.map((seance) =>
                     <MovieSeance
