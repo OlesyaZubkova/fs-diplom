@@ -5,14 +5,12 @@ import SeanceCard from './components/Client/SeanceCard';
 
 function App() {
     return (
-
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<MovieCard/>}/>
-            <Route path="cinemaHall/:seanceId" element={<SeanceCard/>}/>
-        </Routes>
-    </BrowserRouter>
-
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MovieCard/>}/>
+                <Route path="cinemaHall/:seanceId" element={<SeanceCard/>}/>
+            </Routes>
+        </BrowserRouter>
     );
 }
 
