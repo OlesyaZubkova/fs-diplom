@@ -7,8 +7,7 @@ const initialState = {
 
 export const getSeance = createAsyncThunk("seance/getSeats", async (id) => {
     const response = await fetch(`/api/client/seats/${id}`);
-    const data = await response.json();
-    return data;
+    return await response.json();
 });
 
 const createSeanceSlice = createSlice({

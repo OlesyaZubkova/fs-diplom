@@ -16,29 +16,20 @@ class CinemaHallSeeder extends Seeder
     public function run()
     {
         DB::table('cinema_halls')->insert([
-            'hall_title' => 'Зал 4',
-            'row' => 5,
-            'chair' => 4,
+            'hall_title' => 'Зал 1',
+            'row' => 8,
+            'chair' => 12,
             'price_standard' => 250,
             'price_vip' => 600,
             'free' => true
         ]);
 
         DB::table('cinema_halls')->insert([
-            'hall_title' => 'Зал 1',
-            'row' => 7,
-            'chair' => 9,
+            'hall_title' => 'Зал 2',
+            'row' => 8,
+            'chair' => 12,
             'price_standard' => 300,
             'price_vip' => 700,
-            'free' => true
-        ]);
-
-        DB::table('cinema_halls')->insert([
-            'hall_title' => 'Зал 3',
-            'row' => 2,
-            'chair' => 6,
-            'price_standard' => 100,
-            'price_vip' => 400,
             'free' => true
         ]);
     }

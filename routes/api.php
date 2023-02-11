@@ -44,10 +44,9 @@ Route::apiResource('/cinemaHall', \App\Http\Controllers\CinemaHallController::cl
 Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
 Route::apiResource('/session', \App\Http\Controllers\SessionController::class);
 Route::apiResource('/ticket', \App\Http\Controllers\TicketController::class);
-
-Route::apiResource('/info', \App\Http\Controllers\CommonController::class);
+Route::apiResource('/seat', \App\Http\Controllers\SeatController::class);
 
 Route::get('/client/calendar', [\App\Http\Controllers\CommonController::class, 'calendar']);
 
-Route::get('/client/seats/{session}', [\App\Http\Controllers\CommonController::class, 'seatsAvailable']);
+Route::get('/client/seats/{session}', [\App\Http\Controllers\CommonController::class, 'seatSelect']);
 

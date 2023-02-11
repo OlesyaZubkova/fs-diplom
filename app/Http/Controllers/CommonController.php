@@ -52,13 +52,13 @@ class CommonController extends Controller
 //                'cinema_halls.chair',
                 'cinema_halls.price_standard',
                 'cinema_halls.price_vip',
-            )->get();
+            )->first();
 
         $tickets = Seat::has('tickets')->whereHas('tickets', function(Builder $query) use ($sessionId) {
             $query->where('session_id', $sessionId);
         })->get();
 
-        $seats = Seat::where('cinema_hall_id', $session->first()->cinema_hall_id)->select('id', 'number', 'status')->get();
+        $seats = Seat::where('cinema_hall_id', $session->cinema_hall_id)->select('id', 'number', 'status')->get();
 
         foreach ($seats as $seat) {
             if ($tickets->contains($seat)) {

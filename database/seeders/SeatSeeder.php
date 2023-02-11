@@ -15,16 +15,23 @@ class SeatSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('seats')->insert([
-            'number' => 3,
-            'status' => 'standard',
-            'cinema_hall_id' => 1,
-        ]);
+        for ($num = 1; $num < 96; $num++) {
+            if ($num === 53 || $num === 54 || $num === 55 || $num === 56) {
+                $status = 'vip';
+            } elseif ($num === 41 || $num === 58 || $num === 74 || $num === 87) {
+                $status = 'disabled';
+            } else {
+                $status = 'standard';
+            }
 
-        DB::table('seats')->insert([
-            'number' => 3,
-            'status' => 'standard',
-            'cinema_hall_id' => 3,
-        ]);
+            for ($h = 1; $h <= 3; $h++) {
+
+                DB::table('seats')->insert([
+                    'number' => $num,
+                    'status' => $status,
+                    'cinema_hall_id' => $h,
+                    ]);
+            }
+        }
     }
 }

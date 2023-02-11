@@ -16,22 +16,50 @@ class SessionSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sessions')->insert([
-            'time' => '10:20',
-            'cinema_hall_id' => 1,
-            'film_id' => 2,
-        ]);
 
-        DB::table('sessions')->insert([
-            'time' => '14:10',
-            'cinema_hall_id' => 3,
-            'film_id' => 1,
-        ]);
+        $seancesTime = array('10:20', '14:10', '18:40', '22:00');
+        $arrLength = count($seancesTime);
+        for ($t = 1; $t < $arrLength; $t++) {
+            DB::table('sessions')->insert([
+                'time' => $seancesTime[$t],
+                'cinema_hall_id' => 1,
+                'film_id' => 2,
+            ]);
 
-        DB::table('sessions')->insert([
-            'time' => '18:40',
-            'cinema_hall_id' => 2,
-            'film_id' => 3,
-        ]);
+            DB::table('sessions')->insert([
+                'time' => $seancesTime[$t],
+                'cinema_hall_id' => 1,
+                'film_id' => 1,
+            ]);
+
+            DB::table('sessions')->insert([
+                'time' => $seancesTime[$t],
+                'cinema_hall_id' => 1,
+                'film_id' => 3,
+            ]);
+        }
+
+        $seancesTime2 = array('11:15', '14:40', '16:00', '18:30', '21:00', '23:30');
+        $arrLength2 = count($seancesTime2);
+
+        for ($t2 = 1; $t2 < $arrLength2; $t2++) {
+            DB::table('sessions')->insert([
+                'time' => $seancesTime2[$t2],
+                'cinema_hall_id' => 2,
+                'film_id' => 2,
+            ]);
+
+            DB::table('sessions')->insert([
+                'time' => $seancesTime2[$t2],
+                'cinema_hall_id' => 2,
+                'film_id' => 1,
+            ]);
+
+            DB::table('sessions')->insert([
+                'time' => $seancesTime2[$t2],
+                'cinema_hall_id' => 2,
+                'film_id' => 3,
+            ]);
+        }
     }
 }
