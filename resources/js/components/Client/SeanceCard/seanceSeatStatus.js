@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import {useState} from "react";
+import { useState } from "react";
 
 export default function SeanceSeatStatus(props)
 {
@@ -32,8 +32,7 @@ export default function SeanceSeatStatus(props)
             'buying-scheme__chair',
             taken ? 'buying-scheme__chair_selected' : active
         )}
-
               onClick={() => status === 'disabled' || status === 'sold' ? false : handleClick()}
-              />
+        />
     );
 }

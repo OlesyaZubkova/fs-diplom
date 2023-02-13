@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getSeance } from "../../../reducers/createSeanceSlice";
+import { createTicket, getSeance } from "../../../reducers/createSeanceSlice";
 import Main from "../Main";
 import SeanceInfo from "./seanceInfo";
 import BuyingScheme from "./buyingScheme";
+import Button from '../Button/btn';
 
 export default function MainSeance() {
     const { session } = useSelector((state) => state.seance);
@@ -40,7 +41,7 @@ export default function MainSeance() {
             <section className="buying">
                 <SeanceInfo/>
                 <BuyingScheme callback={selectedHandle}/>
-                <button className="acceptin-button" onClick="location.href='payment.html'">Забронировать</button>
+                <Button text={"Забронировать"} link={"/payment"} callback={submitHandle}/>
             </section>
         </Main>
     );
