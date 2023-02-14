@@ -4,6 +4,7 @@ import MovieCard from './components/Client/MovieCard';
 import SeanceCard from './components/Client/SeanceCard';
 import MainPayment from "./components/Client/PaymentCard";
 import MainTicket from "./components/Client/TicketCard";
+import Main from "./components/Admin/Main";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <Route path="cinemaHall/:seanceId" element={<SeanceCard/>}/>
                 <Route path="payment" element={<MainPayment/>}/>
                 <Route path="ticket" element={<MainTicket/>}/>
+                <Route path="admin" element={<Main/>}/>
             </Routes>
         </BrowserRouter>
     );

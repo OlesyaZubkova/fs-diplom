@@ -5,7 +5,6 @@ export default function MovieInfo(props)
     const { films } = useSelector((state) => state.calendar);
     const { id } = props;
     const film = films.find((film) => film.id === id)
-    console.log(film);
 
     function getNoun(number) {
         let n = Math.abs(number);

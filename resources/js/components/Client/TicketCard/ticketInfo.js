@@ -1,5 +1,5 @@
 export default function TicketInfo(props) {
-    const {film, seats, cinemaHall, time, cost} = props;
+    const {film, seats, cinemaHall, time} = props;
 
     return (
         <>
