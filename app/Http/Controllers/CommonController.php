@@ -20,7 +20,7 @@ class CommonController extends Controller
 
         $cinemaHalls = CinemaHall::with('sessions')
             ->where('free', 1)
-            ->select('id', 'hall_title')
+            ->select('id', 'name')
             ->get();
 
         // доступные к просмотру фильмы
@@ -45,11 +45,9 @@ class CommonController extends Controller
                 'sessions.id',
                 'sessions.time',
                 'films.title',
-//                'film_id',
                 'sessions.cinema_hall_id',
-                'cinema_halls.hall_title',
+                'cinema_halls.name',
                 'cinema_halls.row',
-//                'cinema_halls.chair',
                 'cinema_halls.price_standard',
                 'cinema_halls.price_vip',
             )->first();

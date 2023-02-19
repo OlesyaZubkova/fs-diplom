@@ -1,23 +1,32 @@
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Main from "../Main";
 import TicketHeader from "../Header/ticketHeader";
 import Button from "../Button/btn";
-import PaymentInfo from "./paymentInfo";
+import TicketInfo from "../TicketCard/ticketInfo";
 
 export default function MainPayment() {
     const { session, seats, ticket } = useSelector((state) => state.seance);
+    const navigate = useNavigate();
 
     const seatsNum = seats.filter((seat) => ticket.seats.includes(seat.id)).map((seat) => seat.number);
+
+    useEffect(() => {
+        if (!session.id || !ticket.seanceId) {
+            navigate(-1);
+        }
+    }, []);
 
     return (
         <Main>
             <section className="ticket">
                 <TicketHeader text={"Вы выбрали билеты:"}/>
                 <div className="ticket__info-wrapper">
-                    <PaymentInfo
+                    <TicketInfo
                         film={session.title}
                         seats={seatsNum.join(', ')}
-                        cinemaHall={session.hall_title}
+                        cinemaHall={session.name}
                         time={session.time}
                         cost={ticket.cost}
                     />

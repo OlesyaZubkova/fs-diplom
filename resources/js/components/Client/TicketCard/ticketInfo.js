@@ -1,5 +1,5 @@
 export default function TicketInfo(props) {
-    const {film, seats, cinemaHall, time} = props;
+    const { film, seats, cinemaHall, time, cost } = props;
 
     return (
         <>
@@ -7,6 +7,7 @@ export default function TicketInfo(props) {
             <p className="ticket__info">Места: <span className="ticket__details ticket__chairs">{seats}</span></p>
             <p className="ticket__info">В зале: <span className="ticket__details ticket__hall">{cinemaHall}</span></p>
             <p className="ticket__info">Начало сеанса: <span className="ticket__details ticket__start">{time}</span></p>
+            <p className="ticket__info">Стоимость: <span className="ticket__details ticket__cost">{cost}</span></p>
         </>
     );
 }

@@ -8,7 +8,7 @@ export default function SeanceInfo() {
                 <div className="buying__info-description">
                     <h2 className="buying__info-title">{session.title}</h2>
                     <p className="buying__info-start">Начало сеанса: {session.time}</p>
-                    <p className="buying__info-hall">{session.hall_title}</p>
+                    <p className="buying__info-hall">{session.name}</p>
                 </div>
             </div>
     );

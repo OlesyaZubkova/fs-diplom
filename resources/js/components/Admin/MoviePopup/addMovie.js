@@ -1,7 +1,7 @@
 export default function AddMovie()
 {
     return (
-        <form action="add_movie" method="post" accept-charset="utf-8">
+        <form method="post" acceptCharset="utf-8">
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="name">
                 Название фильма
                 <input className="conf-step__input" type="text" placeholder="Например, &laquo;Гражданин Кейн&raquo;"
@@ -12,5 +12,5 @@ export default function AddMovie()
                     <button className="conf-step__button conf-step__button-regular">Отменить</button>
             </div>
         </form>
-    )
+    );
 }

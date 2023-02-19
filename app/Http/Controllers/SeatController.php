@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SeatRequest;
 use App\Models\Seat;
 use App\Models\CinemaHall;
+use App\Models\Session;
 use Illuminate\Http\Response;
 
 class SeatController extends Controller
@@ -27,6 +28,11 @@ class SeatController extends Controller
      */
     public function store(SeatRequest $request)
     {
+        $cinemaHallId = $request->validated()['seats'][0]['cinema_hall_id'];
+        $cinemaHall = CinemaHall::findOrFail($cinemaHallId);
+        Seat::whereCinemaHallId($cinemaHall->id)->delete();
+        Session::whereCinemaHallId($cinemaHall->id)->delete();
+
         foreach ($request->validated()['seats'] as $seat)
         {
             Seat::create($seat);
@@ -56,9 +62,9 @@ class SeatController extends Controller
     {
         foreach ($request->validated()['seats'] as $seat)
         {
-            $place = Seat::findOfFail($seat['id']);
-            $place->fill($seat);
-            $place->save();
+            $cinemaSeat = Seat::findOfFail($seat['id']);
+            $cinemaSeat->fill($seat);
+            $cinemaSeat->save();
         }
         return response(true, 201);
     }

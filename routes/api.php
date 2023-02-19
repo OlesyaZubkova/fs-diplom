@@ -40,13 +40,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/client/calendar', [\App\Http\Controllers\CommonController::class, 'calendar']);
+Route::get('/client/seats/{session}', [\App\Http\Controllers\CommonController::class, 'seatSelect']);
+Route::put('/seats/update', [\App\Http\Controllers\SeatController::class, 'updateMany']);
+
 Route::apiResource('/cinemaHall', \App\Http\Controllers\CinemaHallController::class);
 Route::apiResource('/film', \App\Http\Controllers\FilmController::class);
+Route::apiResource('/seat', \App\Http\Controllers\SeatController::class);
 Route::apiResource('/session', \App\Http\Controllers\SessionController::class);
 Route::apiResource('/ticket', \App\Http\Controllers\TicketController::class);
-Route::apiResource('/seat', \App\Http\Controllers\SeatController::class);
-
-Route::get('/client/calendar', [\App\Http\Controllers\CommonController::class, 'calendar']);
-
-Route::get('/client/seats/{session}', [\App\Http\Controllers\CommonController::class, 'seatSelect']);
-

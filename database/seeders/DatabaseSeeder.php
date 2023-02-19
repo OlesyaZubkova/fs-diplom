@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             TicketSeeder::class,
             AdminSeeder::class,
             SeatSeeder::class
-
         ]);
     }
 }

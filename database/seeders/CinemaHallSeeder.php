@@ -16,7 +16,7 @@ class CinemaHallSeeder extends Seeder
     public function run()
     {
         DB::table('cinema_halls')->insert([
-            'hall_title' => 'Зал 1',
+            'name' => 'Зал 1',
             'row' => 8,
             'chair' => 12,
             'price_standard' => 250,
@@ -25,7 +25,7 @@ class CinemaHallSeeder extends Seeder
         ]);
 
         DB::table('cinema_halls')->insert([
-            'hall_title' => 'Зал 2',
+            'name' => 'Зал 2',
             'row' => 8,
             'chair' => 12,
             'price_standard' => 300,

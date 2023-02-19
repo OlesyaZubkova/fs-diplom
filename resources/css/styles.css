@@ -32,6 +32,10 @@ body {
     font-weight: 100;
 }
 
+.page-header a {
+    text-decoration: none;
+}
+
 /* ~~~~~~~~~~~~ Главная ~~~~~~~~~~~~ */
 .page-nav {
     position: sticky;
@@ -402,6 +406,13 @@ body {
 }
 .ticket__hint + .ticket__hint {
     margin-top: 1rem;
+}
+
+.ticket__hint_img {
+    display: block;
+    margin: 3rem auto 0;
+    width: 20rem;
+    height: 20rem;
 }
 
 .ticket__info-qr {

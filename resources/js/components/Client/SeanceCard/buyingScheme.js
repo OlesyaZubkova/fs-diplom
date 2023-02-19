@@ -35,23 +35,23 @@ export default function BuyingScheme(props) {
             <div className="buying-scheme__legend">
                 <div className="col">
                     <p className="buying-scheme__legend-price"><span
-                        className="buying-scheme__chair buying-scheme__chair_standart"></span> Свободно (<span
+                        className="buying-scheme__chair buying-scheme__chair_standart"/> Свободно (<span
                         className="buying-scheme__legend-value">{session.price_standard}</span>руб)
                     </p>
 
                     <p className="buying-scheme__legend-price"><span
-                        className="buying-scheme__chair buying-scheme__chair_vip"></span> Свободно VIP (<span
+                        className="buying-scheme__chair buying-scheme__chair_vip"/> Свободно VIP (<span
                         className="buying-scheme__legend-value">{session.price_vip}</span>руб)
                     </p>
                 </div>
 
                 <div className="col">
                     <p className="buying-scheme__legend-price"><span
-                        className="buying-scheme__chair buying-scheme__chair_taken"></span> Занято
+                        className="buying-scheme__chair buying-scheme__chair_taken"/> Занято
                     </p>
 
                     <p className="buying-scheme__legend-price"><span
-                        className="buying-scheme__chair buying-scheme__chair_selected"></span> Выбрано
+                        className="buying-scheme__chair buying-scheme__chair_selected"/> Выбрано
                     </p>
                 </div>
             </div>

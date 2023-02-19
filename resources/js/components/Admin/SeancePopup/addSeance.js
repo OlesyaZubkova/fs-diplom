@@ -1,7 +1,7 @@
 export default function AddSeance()
 {
     return (
-        <form action="add_movie" method="post" accept-charset="utf-8">
+        <form method="post" acceptCharset="utf-8">
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="hall">
                 Название зала
                 <select className="conf-step__input" name="hall" required>
@@ -25,5 +25,5 @@ export default function AddSeance()
                     <button className="conf-step__button conf-step__button-regular">Отменить</button>
             </div>
         </form>
-    )
+    );
 }

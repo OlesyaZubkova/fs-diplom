@@ -1,5 +1,6 @@
-export default function TicketHeader(props) {
-    const {text} = props;
+export default function TicketHeader(props)
+{
+    const { text } = props;
 
     return (
         <header className="tichet__check">

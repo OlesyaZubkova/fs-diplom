@@ -2,6 +2,7 @@ import { useSelector} from "react-redux";
 import Main from "../Main";
 import TicketHeader from "../Header/ticketHeader";
 import TicketInfo from "./ticketInfo";
+import qrcode from "../../Images/qrcode.png";
 
 export default function MainTicket() {
     const { session, seats, ticket } = useSelector((state) => state.seance);
@@ -15,11 +16,15 @@ export default function MainTicket() {
                     <TicketInfo
                         film={session.title}
                         seats={seatsNum.join(', ')}
-                        cinemaHall={session.hall_title}
+                        cinemaHall={session.name}
                         time={session.time}
+                        cost={ticket.cost}
                     />
                     <p className="ticket__hint">Покажите QR-код нашему контроллеру для подтверждения бронирования.</p>
                     <p className="ticket__hint">Приятного просмотра!</p>
+                    <a>
+                        <img className="ticket__hint_img" src={qrcode} alt="QR-code"/>
+                    </a>
                 </div>
             </section>
         </Main>

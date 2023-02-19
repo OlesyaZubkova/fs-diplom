@@ -25,7 +25,7 @@ export default function PaymentInfo() {
         <>
             <p className="ticket__info">На фильм: <span className="ticket__details ticket__title">{session.title}</span></p>
             <p className="ticket__info">Места: <span className="ticket__details ticket__chairs">{seatsNum.join(', ')}</span></p>
-            <p className="ticket__info">В зале: <span className="ticket__details ticket__hall">{session.hall_title}</span></p>
+            <p className="ticket__info">В зале: <span className="ticket__details ticket__hall">{session.name}</span></p>
             <p className="ticket__info">Начало сеанса: <span className="ticket__details ticket__start">{session.time}</span></p>
             <p className="ticket__info">Стоимость: <span className="ticket__details ticket__cost">{ticket.cost}</span> { } {getNoun(ticket.cost)}</p>
         </>
