@@ -11,7 +11,7 @@ class Film extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'title', 'description', 'duration', 'country', 'poster',
+        'id', 'title', 'description', 'duration', 'country', //'poster',
     ];
 
     protected $hidden = [

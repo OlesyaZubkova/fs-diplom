@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { showPopup } from "../../../reducers/createPopupSlice";
 
-export default function HallDeleteBtn(props)
+export default function DeleteHallAction(props)
 {
     const { id, name } = props;
     const dispatch = useDispatch();
@@ -9,7 +9,7 @@ export default function HallDeleteBtn(props)
     return (
         <li>{name}
             <button className="conf-step__button conf-step__button-trash"
-                    onClick={() => dispatch(showPopup({form: "deleteHall", id}))}/>
+                    onClick={() => dispatch(showPopup({title: "Удаление зала", form: "deleteHall", id}))}/>
         </li>
     );
 }

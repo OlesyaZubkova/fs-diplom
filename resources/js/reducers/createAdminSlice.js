@@ -3,6 +3,8 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const initialState = {
     cinemaHalls: [],
     seats: [],
+    movies: [],
+    seances: [],
     selectedCinemaHallScheme: {},
 };
 
@@ -80,6 +82,67 @@ export const updateSeats = createAsyncThunk(
     }
 );
 
+export const getMovies = createAsyncThunk(
+    "admin/getMovies",
+    async () => {
+        const response = await fetch(`/api/film`);
+        return await response.json();
+    }
+);
+
+export const createMovie = createAsyncThunk(
+    "admin/createMovie",
+    async ({title, description, duration, country, poster}) => {
+        const response = await fetch(`/api/film`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({title, description, duration, country, poster}),
+        });
+        return response.ok;
+    }
+);
+
+export const deleteMovie = createAsyncThunk(
+    "admin/deleteMovie",
+    async (id) => {
+        const response = await fetch(`/api/film/${id}`, {
+            method: "DELETE",
+        });
+        return response.ok;
+    }
+);
+
+export const getSeances = createAsyncThunk(
+    "admin/getSeances",
+    async () => {
+        const response = await fetch(`/api/session`);
+        return await response.json();
+    }
+);
+
+export const createSeance = createAsyncThunk(
+    "admin/createSeance",
+    async ({time, cinema_hall_id, film_id}) => {
+        const response = await fetch(`/api/session`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({time, cinema_hall_id, film_id}),
+        });
+        return response.ok;
+    }
+);
+
+export const deleteSeance = createAsyncThunk(
+    "admin/deleteSeance",
+    async (id) => {
+        const response = await fetch(`/api/session/${id}`, {
+            method: "DELETE",
+        });
+        return response.ok;
+    }
+);
+
+
 const createAdminSlice = createSlice({
     name: "admin",
     initialState,
@@ -108,6 +171,12 @@ const createAdminSlice = createSlice({
             })
             .addCase(getSeats.fulfilled, (state, action) => {
                 state.seats = action.payload;
+            })
+            .addCase(getMovies.fulfilled, (state, action) => {
+                state.movies = action.payload;
+            })
+            .addCase(getSeances.fulfilled, (state, action) => {
+                state.seances = action.payload;
             })
     },
 });

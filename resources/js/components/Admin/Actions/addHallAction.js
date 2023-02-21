@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { showPopup } from "../../../reducers/createPopupSlice";
 import { getHalls } from "../../../reducers/createAdminSlice";
+import { showPopup } from "../../../reducers/createPopupSlice";
+import DeleteHallAction from "./deleteHallAction";
 import Button from "../Buttons/btn";
-import DeleteHallAction from "../Actions/deleteHallAction";
 
-export default function CinemaHallControl()
+export default function AddHallAction()
 {
     const { cinemaHalls } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getHalls());
-    },[]);
+    }, []);
 
     return (
         <div className="conf-step__wrapper">
@@ -26,7 +26,7 @@ export default function CinemaHallControl()
                     />
                 )}
             </ul>
-            <Button text={"Создать зал"} callback={() => dispatch(showPopup({form: "addHall"}))}/>
+            <Button text={"Создать зал"} callback={() => dispatch(showPopup({title: "Добавление зала", form: "addHall"}))}/>
         </div>
     );
 }

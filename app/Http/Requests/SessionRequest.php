@@ -28,8 +28,8 @@ class SessionRequest extends FormRequest
     {
         return [
             'time' => ['required', 'string'],
-            'cinema_hall_id' => ['required', 'integer'],
-            'film_id' => ['required', 'integer'],
+            'cinema_hall_id' => ['integer'],
+            'film_id' => ['integer'],
         ];
     }
 

@@ -1,26 +1,12 @@
 import { useSelector } from "react-redux";
+import getNoun from "../wordsEndings/minEnd";
 
 export default function MovieInfo(props)
 {
     const { films } = useSelector((state) => state.calendar);
     const { id } = props;
-    const film = films.find((film) => film.id === id)
-
-    function getNoun(number) {
-        let n = Math.abs(number);
-        n %= 100;
-        if (n >= 5 && n <= 20) {
-            return 'минут';
-        }
-        n %= 10;
-        if (n === 1) {
-            return 'минута';
-        }
-        if (n >= 2 && n <= 4) {
-            return 'минуты';
-        }
-        return 'минут';
-    }
+    const film = films.find((film) => film.id === id);
+    const defineEnd = getNoun(film.duration);
 
     return (
         <div className="movie__info">
@@ -31,7 +17,7 @@ export default function MovieInfo(props)
                 <h2 className="movie__title">{film.title}</h2>
                 <p className="movie__synopsis">{film.description}</p>
                 <p className="movie__data">
-                    <span className="movie__data-duration">{film.duration} {getNoun(film.duration)}</span>
+                    <span className="movie__data-duration">{film.duration} {defineEnd}</span>
                     {" "}
                     <span className="movie__data-origin">{film.country}</span>
                 </p>

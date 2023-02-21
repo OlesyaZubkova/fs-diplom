@@ -23,18 +23,18 @@ class SessionSeeder extends Seeder
             DB::table('sessions')->insert([
                 'time' => $seancesTime[$t],
                 'cinema_hall_id' => 1,
-                'film_id' => 2,
-            ]);
-
-            DB::table('sessions')->insert([
-                'time' => $seancesTime[$t],
-                'cinema_hall_id' => 1,
                 'film_id' => 1,
             ]);
 
             DB::table('sessions')->insert([
                 'time' => $seancesTime[$t],
-                'cinema_hall_id' => 1,
+                'cinema_hall_id' => 3,
+                'film_id' => 2,
+            ]);
+
+            DB::table('sessions')->insert([
+                'time' => $seancesTime[$t],
+                'cinema_hall_id' => 5,
                 'film_id' => 3,
             ]);
         }
@@ -46,18 +46,18 @@ class SessionSeeder extends Seeder
             DB::table('sessions')->insert([
                 'time' => $seancesTime2[$t2],
                 'cinema_hall_id' => 2,
+                'film_id' => 1,
+                ]);
+
+            DB::table('sessions')->insert([
+                'time' => $seancesTime2[$t2],
+                'cinema_hall_id' => 4,
                 'film_id' => 2,
             ]);
 
             DB::table('sessions')->insert([
                 'time' => $seancesTime2[$t2],
-                'cinema_hall_id' => 2,
-                'film_id' => 1,
-            ]);
-
-            DB::table('sessions')->insert([
-                'time' => $seancesTime2[$t2],
-                'cinema_hall_id' => 2,
+                'cinema_hall_id' => 6,
                 'film_id' => 3,
             ]);
         }

@@ -24,7 +24,7 @@ class SeatSeeder extends Seeder
                 $status = 'standard';
             }
 
-            for ($h = 1; $h <= 3; $h++) {
+            for ($h = 1; $h <= 6; $h++) {
 
                 DB::table('seats')->insert([
                     'number' => $num,
