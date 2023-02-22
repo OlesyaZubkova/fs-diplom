@@ -1,18 +1,22 @@
 import { useState } from "react";
+import {useDispatch, useSelector} from "react-redux";
 import Navigation from "./index";
+import {chooseDate} from "../../../reducers/createAdminSlice";
+
 
 function Navigate()
 {
     const [start, setStart] = useState(new Date());
-    const [chosen, setChosen] = useState(new Date(start.getTime()));
+    const {chosenDate} = useSelector((state) => state.calendar);
+    const dispatch = useDispatch();
     const today = new Date();
 
     const handleClick = (day) => {
-        setChosen(new Date(day));
+        dispatch(chooseDate(`${day.getFullYear()}-${day.getMonth() + 1}-${day.getDate()}`));
     }
 
     const handleStart = (day, arg) => {
-        setStart(new Date(day.setDate(day.getDay() + arg)));
+        setStart(new Date(day.setDate(day.getDate() + arg)));
     }
 
     const days = [new Date(start.getTime())];
@@ -31,7 +35,7 @@ function Navigate()
             {days.map((day) =>
                 <Navigation
                 date={day}
-                chosen={chosen}
+                chosen={chosenDate}
                 handleClick={() => handleClick(day)}
                 key={day}
                 />

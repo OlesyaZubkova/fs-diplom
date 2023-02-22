@@ -26,7 +26,7 @@ export default function CinemaHallControl()
                     />
                 )}
             </ul>
-            <Button text={"Создать зал"} callback={() => dispatch(showPopup({form: "addHall"}))}/>
+            <Button text={"Создать зал"} callback={() => dispatch(showPopup({title: "Добавление зала", form: "addHall"}))}/>
         </div>
     );
 }

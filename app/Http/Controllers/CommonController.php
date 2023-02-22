@@ -6,31 +6,30 @@ use App\Models\CinemaHall;
 use App\Models\Film;
 use App\Models\Session;
 use App\Models\Seat;
-use App\Models\Ticket;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DateTime;
 use Illuminate\Database\Eloquent\Builder;
 
 class CommonController extends Controller
 {
 
-    public function calendar()
+    public function calendar(string $datetime)
     {
+
+        $timeSeance = DateTime::createFromFormat('Y-m-d', $datetime)->format('Y-m-d');
         // доступные для посещения кинозалы
 
-        $cinemaHalls = CinemaHall::with('sessions')
-            ->where('free', 1)
-            ->select('id', 'name')
-            ->get();
+        $cinemaHalls = CinemaHall::where('free', 1)->whereHas('sessions', function (Builder $query) use ($timeSeance) {
+            $query->whereDate('$datetime', $timeSeance);
+        })->select('id', 'name')->get();
 
         // доступные к просмотру фильмы
-        $filmId = Session::whereHas('cinemaHall', function (Builder $query) {
+        $sessions = Session::whereDate('datetime', $timeSeance)->whereHas('cinemaHall', function (Builder $query) {
             $query->where('free', 1);
-        })->pluck('film_id');
+        })->get();
 
-        $films = Film::all()->whereIn('id', $filmId);
+        $films = Film::all()->whereIn('id', $sessions->pluck('film_id'));
 
-        return ["films" => $films, "cinemaHalls" => $cinemaHalls];
+        return ["cinemaHalls" => $cinemaHalls, "sessions" => $sessions, "films" => $films];
 
     }
 
@@ -43,7 +42,7 @@ class CommonController extends Controller
             ->join('films', 'sessions.film_id', '=', 'films.id')
             ->select(
                 'sessions.id',
-                'sessions.time',
+                'sessions.datetime',
                 'films.title',
                 'sessions.cinema_hall_id',
                 'cinema_halls.name',

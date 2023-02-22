@@ -5,18 +5,18 @@ import AddSeanceAction from "../Actions/addSeanceAction";
 
 export default function SeancesHall()
 {
-    const { seances, cinemaHalls } = useSelector((state) => state.admin);
+    const { cinemaHalls, chosenDate } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getSeances());
-    }, []);
+    }, [chosenDate]);
 
     return (
         <div className="conf-step__seances">
             {cinemaHalls.map((cinemaHall) =>
                 <AddSeanceAction
-                    id={cinemaHall.id}
+                    cinemaHallId={cinemaHall.id}
                     name={cinemaHall.name}
                     key={cinemaHall.id}
                 />

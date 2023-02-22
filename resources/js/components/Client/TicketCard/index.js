@@ -17,7 +17,7 @@ export default function MainTicket() {
                         film={session.title}
                         seats={seatsNum.join(', ')}
                         cinemaHall={session.name}
-                        time={session.time}
+                        time={session.datetime}
                         cost={ticket.cost}
                     />
                     <p className="ticket__hint">Покажите QR-код нашему контроллеру для подтверждения бронирования.</p>

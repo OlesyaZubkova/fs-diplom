@@ -11,7 +11,7 @@ class Session extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id', 'time', 'cinema_hall_id', 'film_id'
+        'id', 'datetime', 'cinema_hall_id', 'film_id'
     ];
 
     protected $hidden = [

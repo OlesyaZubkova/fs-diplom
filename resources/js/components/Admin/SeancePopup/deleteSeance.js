@@ -9,14 +9,15 @@ export default function DeleteSeance()
     const {seances, movies} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
-    const seance = seances.find((seance) => seance.id == id);
-    const title = movies.find((movie) => movie.id == seance.film_id).title;
+    const seance = seances.find((seance) => +seance.id === id);
+    const title = movies.find((movie) => movie.id === +seance.film_id).title;
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(deleteSeance(id));
-        dispatch(closePopup());
-        dispatch(getSeances());
+        dispatch(deleteSeance(id)).then(() => {
+            dispatch(closePopup());
+            dispatch(getSeances());
+        });
     };
 
     return (

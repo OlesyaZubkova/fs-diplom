@@ -6,12 +6,12 @@ import Main from '../Main';
 
 export default function MainMovie()
 {
-    const { films } = useSelector((state) => state.calendar);
+    const { chosenDate, films } = useSelector((state) => state.calendar);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCalendar());
-    }, []);
+        dispatch(getCalendar(chosenDate));
+    }, [chosenDate]);
 
     return (
         <Main nav>

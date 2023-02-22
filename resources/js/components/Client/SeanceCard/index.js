@@ -17,7 +17,7 @@ export default function MainSeance() {
         dispatch(getSeance(seanceId));
     }, []);
 
-    const selectedHandle = (id, status) => {
+    const selectHandle = (id, status) => {
         const price = status === 'vip' ? session.price_vip : session.price_standard;
         const hasSeat = selectedSeats.findIndex((seat) => seat.id === id);
         if (hasSeat !== -1) {
@@ -40,7 +40,7 @@ export default function MainSeance() {
         <Main>
             <section className="buying">
                 <SeanceInfo/>
-                <BuyingScheme callback={selectedHandle}/>
+                <BuyingScheme callback={selectHandle}/>
                 <Button text={"Забронировать"} link={"/payment"} callback={submitHandle}/>
             </section>
         </Main>

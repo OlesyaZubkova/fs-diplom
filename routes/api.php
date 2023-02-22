@@ -42,6 +42,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/client/calendar', [\App\Http\Controllers\CommonController::class, 'calendar']);
 Route::get('/client/seats/{session}', [\App\Http\Controllers\CommonController::class, 'seatSelect']);
+Route::get('/client/calendar/{date}', [\App\Http\Controllers\CommonController::class, 'calendar']);
 Route::put('/seats/update', [\App\Http\Controllers\SeatController::class, 'updateMany']);
 
 Route::apiResource('/cinemaHall', \App\Http\Controllers\CinemaHallController::class);

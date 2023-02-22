@@ -15,7 +15,7 @@ export default function MovieHall(props)
                 {cinemaHallSeances.map((seance) =>
                     <MovieSeance
                         id={seance.id}
-                        time={seance.time}
+                        time={seance.datetime}
                         key={seance.id}
                     />
                 )}

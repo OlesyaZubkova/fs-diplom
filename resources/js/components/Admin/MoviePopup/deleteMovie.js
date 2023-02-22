@@ -6,17 +6,18 @@ import AcceptBtn from "../Buttons/acceptBtn";
 export default function DeleteMovie()
 {
     const { id } = useSelector((state) => state.popup);
-    const { movie } = useSelector((state) => state.admin);
+    const { movies } = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     const title = movies.find((movie) => movie.id === id).title;
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(deleteMovie(id));
-        dispatch(closePopup());
-        dispatch(getSeances());
-        dispatch(getMovies());
+        dispatch(deleteMovie(id)).then(() => {
+            dispatch(closePopup());
+            dispatch(getSeances());
+            dispatch(getMovies());
+        });
     };
 
     return (

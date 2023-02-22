@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const today = new Date();
 const initialState = {
     cinemaHalls: [],
     seats: [],
     movies: [],
     seances: [],
     selectedCinemaHallScheme: {},
+    chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
 };
 
 export const getHalls = createAsyncThunk(
@@ -122,11 +124,11 @@ export const getSeances = createAsyncThunk(
 
 export const createSeance = createAsyncThunk(
     "admin/createSeance",
-    async ({time, cinema_hall_id, film_id}) => {
+    async ({datetime, cinema_hall_id, film_id}) => {
         const response = await fetch(`/api/session`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({time, cinema_hall_id, film_id}),
+            body: JSON.stringify({datetime, cinema_hall_id, film_id}),
         });
         return response.ok;
     }
@@ -162,7 +164,10 @@ const createAdminSlice = createSlice({
             const {id, status} = action.payload;
             const seat = state.seats.find((seat) => seat.id === id);
             seat.status = status;
-        }
+        },
+        chooseDate: (state, action) => {
+            state.chosenDate = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -181,5 +186,5 @@ const createAdminSlice = createSlice({
     },
 });
 
-export const {createScheme, selectCinemaHallScheme, changeHallSize, changeSeatStatus} = createAdminSlice.actions;
+export const {createScheme, selectCinemaHallScheme, changeHallSize, changeSeatStatus, chooseDate} = createAdminSlice.actions;
 export default createAdminSlice.reducer;

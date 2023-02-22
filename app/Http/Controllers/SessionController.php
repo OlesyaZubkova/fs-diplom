@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SessionRequest;
 use App\Models\Session;
+use DateTime;
 use Illuminate\Http\Response;
 
 class SessionController extends Controller
@@ -35,9 +36,10 @@ class SessionController extends Controller
      * @param  \App\Models\Session  $session
      * @return \Illuminate\Http\Response
      */
-    public function show(Session $session)
+    public function show($datetime)
     {
-        //
+        $timeSeance = DateTime::createFromFormat('Y-m-d', $datetime)->format('Y-m-d');
+        return Session::whereDate('datetime', $timeSeance)->get();
     }
 
     /**

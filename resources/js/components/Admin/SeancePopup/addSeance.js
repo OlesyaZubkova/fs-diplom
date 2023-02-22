@@ -7,8 +7,9 @@ import AcceptBtn from "../Buttons/acceptBtn";
 export default function AddSeance()
 {
     const {id} = useSelector((state) => state.popup);
-    const {cinemaHalls, movies} = useSelector((state) => state.admin);
-    const EMPTY_STATE = {time: "00:00", cinemaHall: id, movie: movies[0].id};
+    const {cinemaHalls, movies, chosenDate} = useSelector((state) => state.admin);
+    const today = new Date();
+    const EMPTY_STATE = {date: chosenDate, time: "00:00", cinemaHall: id, movie: movies[0].id};
     const [form, setForm] = useState(EMPTY_STATE);
     const dispatch = useDispatch();
 
@@ -20,13 +21,15 @@ export default function AddSeance()
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const datetime = new Date(form.date);
         dispatch(createSeance({
-            time: form.time,
+            datetime: `${datetime.getFullYear()}-${('0' + (datetime.getMonth() + 1)).slice(-2)}-${('0' + datetime.getDate()).slice(-2)} ${form.datetime}`,
             cinema_hall_id: form.cinemaHall,
             film_id: form.movie,
-        }));
-        dispatch(closePopup());
-        dispatch(getSeances());
+        })).then(() => {
+            dispatch(closePopup());
+            dispatch(getSeances());
+        });
     };
 
     return (
@@ -45,6 +48,19 @@ export default function AddSeance()
                         </option>)}
                 </select>
             </label>
+
+            <label className="conf-step__label conf-step__label-fullsize" htmlFor="date">
+                Дата сеанса
+                <input className="conf-step__input"
+                       type="date"
+                       value={form.date}
+                       onChange={handleChange}
+                       name="date"
+                       pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                       min={`${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`}
+                       required/>
+            </label>
+
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="time">
                 Время начала
                 <input className="conf-step__input"
