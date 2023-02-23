@@ -205,6 +205,12 @@ input[type='radio'], input[type='submit'], button, .conf-step__header, select {
   }
 }
 
+.page-header__exit {
+    float: right;
+    cursor: pointer;
+    letter-spacing: 0.46rem;
+}
+
 .conf-step:first-of-type .conf-step__header {
   &::before {
     top: 50%;
