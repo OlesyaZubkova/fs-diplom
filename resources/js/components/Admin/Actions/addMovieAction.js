@@ -24,7 +24,7 @@ export default function AddMovieAction() {
                 {movies.map((movie) =>
                     <DeleteMovieAction
                         id={movie.id}
-                        img={`poster${Math.floor(Math.random() * 5) + 1}.jpg`}
+                        img={movie.poster}
                         title={movie.title}
                         duration={movie.duration}
                         key={movie.id}

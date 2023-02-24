@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createMovie, getMovies } from "../../../reducers/createAdminSlice";
 import { closePopup } from "../../../reducers/createPopupSlice";
@@ -9,6 +9,7 @@ export default function AddMovie()
     const EMPTY_STATE = {title: "", description: "", duration: "", country: ""};
     const [form, setForm] = useState(EMPTY_STATE);
     const dispatch = useDispatch();
+    const fileInput = useRef(null);
 
     const handleChange = ({target}) => {
         const name = target.name;
@@ -22,14 +23,27 @@ export default function AddMovie()
             title: form.title,
             description: form.description,
             duration: form.duration,
-            country: form.country
-        }));
-        dispatch(closePopup());
-        dispatch(getMovies());
+            country: form.country,
+            poster: fileInput.current.files[0],
+        })).then(() => {
+            dispatch(closePopup());
+            dispatch(getMovies());
+        });
     };
 
     return (
         <form acceptCharset="utf-8" onSubmit={handleSubmit}>
+            <label className="conf-step__label conf-step__label-fullsize" htmlFor="poster">
+                Постер фильма
+                <input className="conf-step__input"
+                       type="file"
+                       accept="image/*"
+                       name="poster"
+                       ref={fileInput}
+                       required
+                />
+            </label>
+
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="name">
                 Название фильма
                 <input className="conf-step__input"
@@ -56,8 +70,8 @@ export default function AddMovie()
             <label className="conf-step__label conf-step__label-fullsize" htmlFor="duration">
                 Длительность фильма
                 <input className="conf-step__input"
-                       type="text"
-                       placeholder="Например, 130 минут"
+                       type="number"
+                       placeholder="Например, 130"
                        name="duration"
                        value={form.duration}
                        onChange={handleChange}

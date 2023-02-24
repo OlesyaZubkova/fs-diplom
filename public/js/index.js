@@ -6153,7 +6153,7 @@ function AddMovieAction() {
       children: movies.map(function (movie) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_deleteMovieAction__WEBPACK_IMPORTED_MODULE_5__["default"], {
           id: movie.id,
-          img: "poster".concat(Math.floor(Math.random() * 5) + 1, ".jpg"),
+          img: movie.poster,
           title: movie.title,
           duration: movie.duration
         }, movie.id);
@@ -6737,9 +6737,6 @@ function Auth(_ref) {
     }),
     token = _useSelector.token;
   var location = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useLocation)();
-  if (name !== 'admin') {
-    alert('jib,fr');
-  }
   if (!token) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Navigate, {
       to: "/admin/login",
@@ -7401,6 +7398,7 @@ function AddMovie() {
     form = _useState2[0],
     setForm = _useState2[1];
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var fileInput = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   var handleChange = function handleChange(_ref) {
     var target = _ref.target;
     var name = target.name;
@@ -7415,15 +7413,28 @@ function AddMovie() {
       title: form.title,
       description: form.description,
       duration: form.duration,
-      country: form.country
-    }));
-    dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
+      country: form.country,
+      poster: fileInput.current.files[0]
+    })).then(function () {
+      dispatch((0,_reducers_createPopupSlice__WEBPACK_IMPORTED_MODULE_3__.closePopup)());
+      dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.getMovies)());
+    });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
     acceptCharset: "utf-8",
     onSubmit: handleSubmit,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
+      className: "conf-step__label conf-step__label-fullsize",
+      htmlFor: "poster",
+      children: ["\u041F\u043E\u0441\u0442\u0435\u0440 \u0444\u0438\u043B\u044C\u043C\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+        className: "conf-step__input",
+        type: "file",
+        accept: "image/*",
+        name: "poster",
+        ref: fileInput,
+        required: true
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("label", {
       className: "conf-step__label conf-step__label-fullsize",
       htmlFor: "name",
       children: ["\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u0444\u0438\u043B\u044C\u043C\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
@@ -7451,8 +7462,8 @@ function AddMovie() {
       htmlFor: "duration",
       children: ["\u0414\u043B\u0438\u0442\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C \u0444\u0438\u043B\u044C\u043C\u0430", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
         className: "conf-step__input",
-        type: "text",
-        placeholder: "\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, 130 \u043C\u0438\u043D\u0443\u0442",
+        type: "number",
+        placeholder: "\u041D\u0430\u043F\u0440\u0438\u043C\u0435\u0440, 130",
         name: "duration",
         value: form.duration,
         onChange: handleChange,
@@ -7685,7 +7696,7 @@ function AddSeance() {
     event.preventDefault();
     var datetime = new Date(form.date);
     dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_3__.createSeance)({
-      datetime: "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2), " ").concat(form.datetime),
+      datetime: "".concat(datetime.getFullYear(), "-").concat(('0' + (datetime.getMonth() + 1)).slice(-2), "-").concat(('0' + datetime.getDate()).slice(-2), " ").concat(form.time),
       cinema_hall_id: form.cinemaHall,
       film_id: form.movie
     })).then(function () {
@@ -9489,31 +9500,31 @@ var getMovies = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThun
 }());
 var createMovie = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("admin/createMovie", /*#__PURE__*/function () {
   var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(_ref17, _ref18) {
-    var title, description, duration, country, getState, token, response;
+    var title, description, duration, country, poster, getState, formData, token, response;
     return _regeneratorRuntime().wrap(function _callee9$(_context9) {
       while (1) switch (_context9.prev = _context9.next) {
         case 0:
-          title = _ref17.title, description = _ref17.description, duration = _ref17.duration, country = _ref17.country;
+          title = _ref17.title, description = _ref17.description, duration = _ref17.duration, country = _ref17.country, poster = _ref17.poster;
           getState = _ref18.getState;
+          formData = new FormData();
+          formData.append('title', title);
+          formData.append('description', description);
+          formData.append('duration', duration);
+          formData.append('country', country);
+          formData.append('poster', poster);
           token = getState().auth.token;
-          _context9.next = 5;
+          _context9.next = 11;
           return fetch("/api/film", {
             method: "POST",
             headers: {
-              "Authorization": "Bearer ".concat(token),
-              "Content-Type": "application/json"
+              "Authorization": "Bearer ".concat(token)
             },
-            body: JSON.stringify({
-              title: title,
-              description: description,
-              duration: duration,
-              country: country
-            })
+            body: formData
           });
-        case 5:
+        case 11:
           response = _context9.sent;
           return _context9.abrupt("return", response.ok);
-        case 7:
+        case 13:
         case "end":
           return _context9.stop();
       }

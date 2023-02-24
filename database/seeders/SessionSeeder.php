@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use DateTime;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,50 +15,47 @@ class SessionSeeder extends Seeder
      */
     public function run()
     {
+        $date = new DateTime('2023-02-27T09:00:00.000+05:30');
+        $date2 = new DateTime('2023-02-27T11:30:00.000+05:30');
+        $date3 = new DateTime('2023-02-27T12:20:00.000+05:30');
+        $date4 = new DateTime('2023-02-27T14:40:00.000+05:30');
+        $date5 = new DateTime('2023-02-27T18:30:00.000+05:30');
+        $date6 = new DateTime('2023-02-27T21:00:00.000+05:30');
 
-        $seancesTime = array('10:20', '14:10', '18:40', '22:00');
-        $arrLength = count($seancesTime);
-        for ($t = 0; $t < $arrLength; $t++) {
-            DB::table('sessions')->insert([
-                'time' => $seancesTime[$t],
-                'cinema_hall_id' => 1,
-                'film_id' => 1,
-            ]);
+        DB::table('sessions')->insert([
+            'datetime' => $date->format('Y-m-d H:i'),
+            'cinema_hall_id' => 1,
+            'film_id' => 1,
+        ]);
 
-            DB::table('sessions')->insert([
-                'time' => $seancesTime[$t],
-                'cinema_hall_id' => 3,
-                'film_id' => 2,
-            ]);
+        DB::table('sessions')->insert([
+            'datetime' => $date2->format('Y-m-d H:i'),
+            'cinema_hall_id' => 3,
+            'film_id' => 2,
+        ]);
 
-            DB::table('sessions')->insert([
-                'time' => $seancesTime[$t],
-                'cinema_hall_id' => 5,
-                'film_id' => 3,
-            ]);
-        }
+        DB::table('sessions')->insert([
+            'datetime' => $date3->format('Y-m-d H:i'),
+            'cinema_hall_id' => 5,
+            'film_id' => 3,
+        ]);
 
-        $seancesTime2 = array('11:15', '14:40', '16:00', '18:30', '21:00', '23:30');
-        $arrLength2 = count($seancesTime2);
+        DB::table('sessions')->insert([
+            'datetime' => $date4->format('Y-m-d H:i'),
+            'cinema_hall_id' => 2,
+            'film_id' => 1,
+        ]);
 
-        for ($t2 = 0; $t2 < $arrLength2; $t2++) {
-            DB::table('sessions')->insert([
-                'time' => $seancesTime2[$t2],
-                'cinema_hall_id' => 2,
-                'film_id' => 1,
-                ]);
+        DB::table('sessions')->insert([
+            'datetime' => $date5->format('Y-m-d H:i'),
+            'cinema_hall_id' => 4,
+            'film_id' => 2,
+        ]);
 
-            DB::table('sessions')->insert([
-                'time' => $seancesTime2[$t2],
-                'cinema_hall_id' => 4,
-                'film_id' => 2,
-            ]);
-
-            DB::table('sessions')->insert([
-                'time' => $seancesTime2[$t2],
-                'cinema_hall_id' => 6,
-                'film_id' => 3,
-            ]);
-        }
+        DB::table('sessions')->insert([
+            'datetime' => $date6->format('Y-m-d H:i'),
+            'cinema_hall_id' => 6,
+            'film_id' => 3,
+        ]);
     }
 }

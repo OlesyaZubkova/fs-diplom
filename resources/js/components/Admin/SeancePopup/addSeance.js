@@ -23,7 +23,7 @@ export default function AddSeance()
         event.preventDefault();
         const datetime = new Date(form.date);
         dispatch(createSeance({
-            datetime: `${datetime.getFullYear()}-${('0' + (datetime.getMonth() + 1)).slice(-2)}-${('0' + datetime.getDate()).slice(-2)} ${form.datetime}`,
+            datetime: `${datetime.getFullYear()}-${('0' + (datetime.getMonth() + 1)).slice(-2)}-${('0' + datetime.getDate()).slice(-2)} ${form.time}`,
             cinema_hall_id: form.cinemaHall,
             film_id: form.movie,
         })).then(() => {

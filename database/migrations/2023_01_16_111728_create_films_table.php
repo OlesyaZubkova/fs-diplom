@@ -14,7 +14,7 @@ class CreateFilmsTable extends Migration
             $table->string('description');
             $table->integer('duration');
             $table->string('country');
-//            $table->string('poster');
+            $table->string('poster');
             $table->timestamps();
         });
     }

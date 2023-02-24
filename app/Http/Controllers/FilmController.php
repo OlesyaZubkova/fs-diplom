@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FilmRequest;
 use App\Models\Film;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
@@ -15,7 +16,6 @@ class FilmController extends Controller
      */
     public function index()
     {
-//        return Film::paginate(10);
         return Film::all();
     }
 
@@ -27,7 +27,10 @@ class FilmController extends Controller
      */
     public function store(FilmRequest $request)
     {
-        return Film::create($request->validated());
+        $film = new Film;
+        $film->fill($request->validated());
+        $film->poster = $request->poster->store('posters');
+        return $film->save();
     }
 
     /**
@@ -50,7 +53,11 @@ class FilmController extends Controller
      */
     public function update(FilmRequest $request, Film $film)
     {
-        $film->fill($request->validated());
+        if ($request->has('poster')) {
+            Storage::delete($film->poster);
+            $film->poster = $request->poster->store('posters');
+        }
+        $film->fill($request->safe()->except('poster'));
         return $film->save();
     }
 
