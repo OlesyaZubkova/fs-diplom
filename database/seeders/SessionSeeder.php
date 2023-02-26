@@ -15,12 +15,12 @@ class SessionSeeder extends Seeder
      */
     public function run()
     {
-        $date = new DateTime('2023-02-27T09:00:00.000+05:30');
+        $date = new DateTime('2023-02-26T23:59:00.000+05:30');
         $date2 = new DateTime('2023-02-27T11:30:00.000+05:30');
         $date3 = new DateTime('2023-02-27T12:20:00.000+05:30');
         $date4 = new DateTime('2023-02-27T14:40:00.000+05:30');
         $date5 = new DateTime('2023-02-27T18:30:00.000+05:30');
-        $date6 = new DateTime('2023-02-27T21:00:00.000+05:30');
+        $date6 = new DateTime('2023-02-27T23:00:00.000+05:30');
 
         DB::table('sessions')->insert([
             'datetime' => $date->format('Y-m-d H:i'),

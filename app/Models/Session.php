@@ -11,7 +11,7 @@ class Session extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id', 'datetime', 'cinema_hall_id', 'film_id'
+        'datetime', 'cinema_hall_id', 'film_id'
     ];
 
     protected $hidden = [
@@ -30,6 +30,6 @@ class Session extends Model
 
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class, 'session_id', 'id');
+        return $this->hasMany(Ticket::class, 'session_id');
     }
 }

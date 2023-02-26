@@ -19,7 +19,7 @@ class CommonController extends Controller
         // доступные для посещения кинозалы
 
         $cinemaHalls = CinemaHall::where('free', 1)->whereHas('sessions', function (Builder $query) use ($timeSeance) {
-            $query->whereDate('$datetime', $timeSeance);
+            $query->whereDate('datetime', $timeSeance);
         })->select('id', 'name')->get();
 
         // доступные к просмотру фильмы
@@ -35,7 +35,7 @@ class CommonController extends Controller
 
     // информация о сеансе
 
-    public function seatSelect($sessionId)
+    public function seatSelect(int $sessionId)
     {
         $session = Session::where('sessions.id', $sessionId)
             ->join('cinema_halls', 'sessions.cinema_hall_id', '=', 'cinema_halls.id')

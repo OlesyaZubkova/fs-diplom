@@ -13,14 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         $this->call([
             FilmSeeder::class,
-            CinemaHallSeeder::class,
-            SessionSeeder::class,
-            TicketSeeder::class,
+//            CinemaHallSeeder::class,
+//            SessionSeeder::class,
+//            TicketSeeder::class,
             AdminSeeder::class,
-            SeatSeeder::class
+//            SeatSeeder::class
         ]);
     }
 }

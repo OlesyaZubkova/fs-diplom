@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-function Navigation(props)
+export default function Navigation(props)
 {
     const { handleClick } = props;
     const week = [
@@ -26,5 +26,3 @@ function Navigation(props)
         </a>
     );
 }
-
-export default Navigation;

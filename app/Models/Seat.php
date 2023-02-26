@@ -11,7 +11,7 @@ class Seat extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id', 'number', 'status', 'cinema_hall_id',
+        'number', 'status', 'cinema_hall_id',
     ];
 
     protected $hidden = [

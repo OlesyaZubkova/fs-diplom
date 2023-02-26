@@ -2,10 +2,9 @@ import { useSelector } from "react-redux";
 import MovieInfo from "./movieInfo";
 import MovieHall from "./movieHall";
 
-function Movie(props)
-{
-    const { cinemaHalls } = useSelector((state) => state.calendar);
-    const { id } = props;
+export default function Movie(props) {
+    const {cinemaHalls} = useSelector((state) => state.calendar);
+    const {id} = props;
     const movieHalls = cinemaHalls.filter((cinemaHall) => cinemaHall.sessions.find((session) => +session.film_id === id));
 
     return (
@@ -21,5 +20,3 @@ function Movie(props)
         </section>
     );
 }
-
-export default Movie;

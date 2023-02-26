@@ -3,6 +3,7 @@ import getNoun from "../wordsEndings/rubEnd";
 export default function TicketInfo(props) {
     const { film, seats, cinemaHall, time, cost } = props;
     const defineEnd = getNoun(cost);
+    const datetime = new Date(time);
 
     return (
         <>
@@ -10,6 +11,7 @@ export default function TicketInfo(props) {
             <p className="ticket__info">Места: <span className="ticket__details ticket__chairs">{seats}</span></p>
             <p className="ticket__info">В зале: <span className="ticket__details ticket__hall">{cinemaHall}</span></p>
             <p className="ticket__info">Начало сеанса:
+                {" "}
                 <span className="ticket__details ticket__start">{time &&
                     datetime.toLocaleDateString('ru-RU', {
                         hour: '2-digit',

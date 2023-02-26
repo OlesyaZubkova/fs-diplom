@@ -1,12 +1,27 @@
-import { useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { buyTicket, resetSeance } from "../../../reducers/createSeanceSlice";
 import Main from "../Main";
 import TicketHeader from "../Header/ticketHeader";
 import TicketInfo from "./ticketInfo";
-import qrcode from "../../Images/qrcode.png";
+import TicketQRCode from "./qrcode";
 
 export default function MainTicket() {
     const { session, seats, ticket } = useSelector((state) => state.seance);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const seatsNum = seats.filter((seat) => ticket.seats.includes(seat.id)).map((seat) => seat.number);
+
+    useEffect(() => {
+        if (!session.id || !ticket.seanceId) {
+            navigate("/");
+        }
+
+        dispatch(buyTicket());
+
+        return () => dispatch(resetSeance());
+    }, []);
 
     return (
         <Main>
@@ -20,11 +35,13 @@ export default function MainTicket() {
                         time={session.datetime}
                         cost={ticket.cost}
                     />
+                    {ticket.id &&
+                        <TicketQRCode
+                            code={`Билет: ${ticket.id}. Зал: ${session.name}. Время: ${session.time}. Места: ${seatsNum.join(', ')}`}
+                        />
+                    }
                     <p className="ticket__hint">Покажите QR-код нашему контроллеру для подтверждения бронирования.</p>
                     <p className="ticket__hint">Приятного просмотра!</p>
-                    <a>
-                        <img className="ticket__hint_img" src={qrcode} alt="QR-code"/>
-                    </a>
                 </div>
             </section>
         </Main>

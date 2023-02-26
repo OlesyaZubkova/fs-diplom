@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const today = new Date();
 const initialState = {
-    films: [],
-    cinemaHalls: [],
     chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
+    cinemaHalls: [],
+    films: [],
 };
 
 export const getCalendar = createAsyncThunk("calendar/getCalendar", async (date) => {
-    const response = await fetch(`/api/client/calendar${date}\``);
+    const response = await fetch(`/api/client/calendar/${date}`);
     return await response.json();
 });
 
@@ -32,5 +32,5 @@ const createCalendarSlice = createSlice({
         },
 });
 
-export const {chooseDate} = createCalendarSlice.actions;
+export const { chooseDate } = createCalendarSlice.actions;
 export default createCalendarSlice.reducer;

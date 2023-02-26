@@ -11,7 +11,7 @@ class Ticket extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id', 'session_id',
+        'session_id',
     ];
 
     protected $hidden = [

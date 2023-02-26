@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCalendar } from "../../../reducers/createCalendarSlice";
 import Movie from "./movie";
-import Main from '../Main';
+import Main from "../Main";
 
 export default function MainMovie()
 {

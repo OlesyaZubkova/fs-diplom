@@ -1,10 +1,9 @@
 import { useState } from "react";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { chooseDate } from "../../../reducers/createAdminSlice";
 import Navigation from "./index";
-import {chooseDate} from "../../../reducers/createAdminSlice";
 
-
-function Navigate()
+export default function Navigate()
 {
     const [start, setStart] = useState(new Date());
     const {chosenDate} = useSelector((state) => state.calendar);
@@ -30,7 +29,7 @@ function Navigate()
         <nav className="page-nav">
             {start.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0) ||
             <a
-                className="page-nav__day page-nav__day_prev" onClick={() => handleStart(start, -1)} href="#">
+                className="page-nav__day page-nav__day_prev" onClick={() => handleStart(start, -6)} href="#">
             </a>}
             {days.map((day) =>
                 <Navigation
@@ -41,10 +40,8 @@ function Navigate()
                 />
             )}
             <a
-                className="page-nav__day page-nav__day_next" onClick={() => handleStart(start, 1)} href="#">
+                className="page-nav__day page-nav__day_next" onClick={() => handleStart(start, 6)} href="#">
             </a>
         </nav>
     );
 }
-
-export default Navigate;

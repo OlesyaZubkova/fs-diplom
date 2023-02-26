@@ -11,7 +11,7 @@ class Film extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'title', 'description', 'duration', 'country', 'poster',
+        'title', 'description', 'duration', 'country', 'poster',
     ];
 
     protected $hidden = [
@@ -20,7 +20,7 @@ class Film extends Model
 
     public function sessions(): HasMany
     {
-    return $this->hasMany(Session::class, 'film_id', 'id');
+    return $this->hasMany(Session::class, 'film_id');
 }
 
 }
