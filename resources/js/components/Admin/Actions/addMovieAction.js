@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getMovies } from "../../../reducers/createAdminSlice";
 import { showPopup } from "../../../reducers/createPopupSlice";
 import Button from "../Buttons/btn";
-import DeleteMovieAction from "./deleteMovieAction";
+import EditMovieAction from "./editMovieAction";
 
 export default function AddMovieAction() {
     const { movies } = useSelector((state) => state.admin);
@@ -22,7 +22,7 @@ export default function AddMovieAction() {
             </p>
             <div className="conf-step__movies">
                 {movies.map((movie) =>
-                    <DeleteMovieAction
+                    <EditMovieAction
                         id={movie.id}
                         img={movie.poster}
                         title={movie.title}

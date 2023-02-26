@@ -8,6 +8,8 @@ import AddMovie from "../MoviePopup/addMovie";
 import DeleteMovie from "../MoviePopup/deleteMovie";
 import AddSeance from "../SeancePopup/addSeance";
 import DeleteSeance from "../SeancePopup/deleteSeance";
+import EditMovie from "../MoviePopup/editMovie";
+import EditSeance from "../SeancePopup/editSeance";
 
 export default function Popup()
 {
@@ -28,10 +30,13 @@ export default function Popup()
                     </div>
                     <div className="popup__wrapper">
                         {form === "addHall" && <AddHall/>}
+                        {form === "editHall" && <AddHall edit/>}
                         {form === "deleteHall" && <DeleteHall/>}
                         {form === "addMovie" && <AddMovie/>}
+                        {form === "editMovie" && <EditMovie/>}
                         {form === "deleteMovie" && <DeleteMovie/>}
                         {form === "addSeance" && <AddSeance/>}
+                        {form === "editSeance" && <EditSeance/>}
                         {form === "deleteSeance" && <DeleteSeance/>}
                     </div>
                 </div>

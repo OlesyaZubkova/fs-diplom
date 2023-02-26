@@ -1,14 +1,23 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { createHall, getHalls } from "../../../reducers/createAdminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {createHall, getHalls, updateHall} from "../../../reducers/createAdminSlice";
 import { closePopup } from "../../../reducers/createPopupSlice";
 import AcceptBtn from "../Buttons/acceptBtn";
 
-export default function AddHall()
+export default function AddHall(props)
 {
-    const EMPTY_STATE = {name: ""};
-    const [form, setForm] = useState(EMPTY_STATE);
     const dispatch = useDispatch();
+    const {edit} = props;
+
+    const INIT_STATE = {name: ""};
+    const {cinemaHalls} = useSelector((state) => state.admin);
+    let cinemaHall = {};
+    if (edit) {
+        const {id} = useSelector((state) => state.popup);
+        cinemaHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === id);
+        INIT_STATE.name = cinemaHall.name;
+    }
+    const [form, setForm] = useState(INIT_STATE);
 
     const handleChange = ({target}) => {
         const name = target.name;
@@ -18,10 +27,18 @@ export default function AddHall()
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(createHall(form.name)).then(() => {
-            dispatch(closePopup());
-            dispatch(getHalls());
-        });
+
+        if (edit) {
+            dispatch(updateHall({...cinemaHall, name: form.name})).then(() => {
+                dispatch(closePopup());
+                dispatch(getHalls());
+            });
+        } else {
+            dispatch(createHall(form.name)).then(() => {
+                dispatch(closePopup());
+                dispatch(getHalls());
+            });
+        }
     };
 
     return (
@@ -37,7 +54,7 @@ export default function AddHall()
                        required
                 />
             </label>
-            <AcceptBtn text={"Добавить зал"}/>
+            <AcceptBtn text={edit ? "Сохранить" : "Добавить зал"}/>
         </form>
     );
 }

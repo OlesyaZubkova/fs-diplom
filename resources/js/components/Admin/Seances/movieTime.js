@@ -17,7 +17,7 @@ export default function MovieTime(props)
         <div
             className={`conf-step__seances-movie conf-step__seances-movie-${index + 1}`}
             style={{width: `${width}px`, left: `${shift}px`}}
-            onClick={() => dispatch(showPopup({title: "Удаление сеанса", form: "deleteSeance", id: seance}))}>
+            onClick={() => dispatch(showPopup({title: "Редактирование сеанса", form: "editSeance", id: seance}))}>
 
             {/*<div className="conf-step__close"/>*/}
 
