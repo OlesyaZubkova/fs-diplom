@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { chooseDate } from "../../../reducers/createAdminSlice";
+import { chooseDate } from "../../../reducers/createCalendarSlice";
 import Navigation from "./index";
 
 export default function Navigate()

@@ -8813,7 +8813,7 @@ function MovieInfo(props) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
           className: "movie__data-duration",
           children: [film.duration, " ", defineEnd]
-        }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+        }), ", ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "movie__data-origin",
           children: film.country
         })]
@@ -8916,7 +8916,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createAdminSlice */ "./resources/js/reducers/createAdminSlice.js");
+/* harmony import */ var _reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../reducers/createCalendarSlice */ "./resources/js/reducers/createCalendarSlice.js");
 /* harmony import */ var _index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index */ "./resources/js/components/Client/Navigation/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -8943,7 +8943,7 @@ function Navigate() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var today = new Date();
   var _handleClick = function handleClick(day) {
-    dispatch((0,_reducers_createAdminSlice__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
+    dispatch((0,_reducers_createCalendarSlice__WEBPACK_IMPORTED_MODULE_2__.chooseDate)("".concat(day.getFullYear(), "-").concat(day.getMonth() + 1, "-").concat(day.getDate())));
   };
   var handleStart = function handleStart(day, arg) {
     setStart(new Date(day.setDate(day.getDate() + arg)));
@@ -9686,10 +9686,10 @@ var today = new Date();
 var initialState = {
   cinemaHalls: [],
   seats: [],
-  movies: [],
-  seances: [],
   selectedCinemaHallScheme: {},
-  chosenDate: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2))
+  movies: [],
+  chosenDate: "".concat(today.getFullYear(), "-").concat(('0' + (today.getMonth() + 1)).slice(-2), "-").concat(('0' + today.getDate()).slice(-2)),
+  seances: []
 };
 var getHalls = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.createAsyncThunk)("admin/getHalls", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_, _ref) {

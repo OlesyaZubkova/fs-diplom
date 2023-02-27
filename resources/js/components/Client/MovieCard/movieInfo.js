@@ -18,7 +18,7 @@ export default function MovieInfo(props)
                 <p className="movie__synopsis">{film.description}</p>
                 <p className="movie__data">
                     <span className="movie__data-duration">{film.duration} {defineEnd}</span>
-                    {" "}
+                    {", "}
                     <span className="movie__data-origin">{film.country}</span>
                 </p>
             </div>

@@ -4,10 +4,10 @@ const today = new Date();
 const initialState = {
     cinemaHalls: [],
     seats: [],
-    movies: [],
-    seances: [],
     selectedCinemaHallScheme: {},
+    movies: [],
     chosenDate: `${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`,
+    seances: [],
 };
 
 export const getHalls = createAsyncThunk(
@@ -284,5 +284,5 @@ const createAdminSlice = createSlice({
     },
 });
 
-export const {createScheme, selectCinemaHallScheme, changeHallSize, changeSeatStatus, chooseDate} = createAdminSlice.actions;
+export const { createScheme, selectCinemaHallScheme, changeHallSize, changeSeatStatus, chooseDate } = createAdminSlice.actions;
 export default createAdminSlice.reducer;
