@@ -1,7 +1,8 @@
 import { useDispatch } from "react-redux";
 import { closePopup } from "../../../reducers/createPopupSlice";
 
-export default function AcceptBtn(props) {
+export default function AcceptBtn(props)
+{
     const {text, handleDelete} = props;
     const dispatch = useDispatch();
 

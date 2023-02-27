@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
-export default function SeanceInfo() {
+export default function SeanceInfo()
+{
     const { session } = useSelector((state) => state.seance);
     const datetime = new Date(session.datetime);
 

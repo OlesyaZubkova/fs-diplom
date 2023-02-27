@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { createSeance, getSeances } from "../../../reducers/createAdminSlice";
+import { createSeance } from "../../../reducers/createAdminSlice";
 import SeanceCard from "../Cards/seanceCard";
 
 export default function AddSeance()

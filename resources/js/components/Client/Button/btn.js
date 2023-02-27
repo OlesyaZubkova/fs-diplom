@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Button(props) {
+export default function Button(props)
+{
     const {text, link, callback} = props;
     const navigate = useNavigate();
 

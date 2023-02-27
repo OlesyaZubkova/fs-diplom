@@ -6,7 +6,8 @@ import TicketHeader from "../Header/ticketHeader";
 import Button from "../Button/btn";
 import TicketInfo from "../TicketCard/ticketInfo";
 
-export default function MainPayment() {
+export default function MainPayment()
+{
     const { session, seats, ticket } = useSelector((state) => state.seance);
     const navigate = useNavigate();
 

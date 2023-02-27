@@ -1,5 +1,5 @@
-import classnames from 'classnames';
 import { useState } from "react";
+import classnames from 'classnames';
 
 export default function SeanceSeatStatus(props)
 {

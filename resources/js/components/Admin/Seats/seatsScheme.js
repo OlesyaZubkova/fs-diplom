@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import SeatStatus from "./seatStatus";
 import { changeSeatStatus } from "../../../reducers/createAdminSlice";
+import SeatStatus from "./seatStatus";
 
-export default function SeatsScheme(props) {
+export default function SeatsScheme(props)
+{
     const { place } = props;
     const { seats } = useSelector((state) => state.admin);
     const dispatch = useDispatch();

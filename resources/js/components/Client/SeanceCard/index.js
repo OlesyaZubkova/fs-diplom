@@ -7,7 +7,8 @@ import SeanceInfo from "./seanceInfo";
 import BuyingScheme from "./buyingScheme";
 import Button from '../Button/btn';
 
-export default function MainSeance() {
+export default function MainSeance()
+{
     const { session } = useSelector((state) => state.seance);
     const seanceId = useParams().seanceId;
     const dispatch = useDispatch();
