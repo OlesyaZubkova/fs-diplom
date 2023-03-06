@@ -1,8 +1,7 @@
-import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import {useSelector} from "react-redux";
+import {Navigate, useLocation} from "react-router-dom";
 
-export default function Auth({children})
-{
+export default function Auth({children}) {
     const {token} = useSelector((state) => state.auth);
     let location = useLocation();
 

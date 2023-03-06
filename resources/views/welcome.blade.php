@@ -7,10 +7,12 @@
     <title>ИдёмВКино</title>
     <link href="{{mix('css/normalize.css')}}" rel="stylesheet">
     <link href="{{mix('css/styles.css')}}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+        rel="stylesheet">
 </head>
 <body>
-    <div id="root"></div>
-    <script src="{{mix('js/index.js')}}"></script>
+<div id="root"></div>
+<script src="{{mix('js/index.js')}}"></script>
 </body>
 </html>

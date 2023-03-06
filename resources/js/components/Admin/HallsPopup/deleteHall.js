@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { deleteHall, getHalls } from "../../../reducers/createAdminSlice";
-import { closePopup } from "../../../reducers/createPopupSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteHall, getHalls} from "../../../reducers/createAdminSlice";
+import {closePopup} from "../../../reducers/createPopupSlice";
 import AcceptBtn from "../Buttons/acceptBtn";
 
-export default function DeleteHall()
-{
-    const { id } = useSelector((state) => state.popup);
-    const { cinemaHalls } = useSelector((state) => state.admin);
+export default function DeleteHall() {
+    const {id} = useSelector((state) => state.popup);
+    const {cinemaHalls} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     const name = cinemaHalls.find((cinemaHall) => cinemaHall.id === id).name;

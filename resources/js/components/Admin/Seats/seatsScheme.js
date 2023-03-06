@@ -1,11 +1,10 @@
-import { useSelector, useDispatch } from "react-redux";
-import { changeSeatStatus } from "../../../reducers/createAdminSlice";
+import {useSelector, useDispatch} from "react-redux";
+import {changeSeatStatus} from "../../../reducers/createAdminSlice";
 import SeatStatus from "./seatStatus";
 
-export default function SeatsScheme(props)
-{
-    const { place } = props;
-    const { seats } = useSelector((state) => state.admin);
+export default function SeatsScheme(props) {
+    const {place} = props;
+    const {seats} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     const chair = seats.length / place;

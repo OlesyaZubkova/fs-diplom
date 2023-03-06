@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class CinemaHall extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name', 'row', 'chair', 'price_standard', 'price_vip', 'free',
     ];

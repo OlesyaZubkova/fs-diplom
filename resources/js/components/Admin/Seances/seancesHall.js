@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getSeances } from "../../../reducers/createAdminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getSeances} from "../../../reducers/createAdminSlice";
 import AddSeanceAction from "../Actions/addSeanceAction";
 
-export default function SeancesHall()
-{
-    const { cinemaHalls, chosenDate } = useSelector((state) => state.admin);
+export default function SeancesHall() {
+    const {cinemaHalls, chosenDate} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     useEffect(() => {

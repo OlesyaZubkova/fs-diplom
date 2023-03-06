@@ -1,6 +1,5 @@
-export default function ChooseHallBtn(props)
-{
-    const { name, checked, callback } = props;
+export default function ChooseHallBtn(props) {
+    const {name, checked, callback} = props;
 
     const handleChange = () => {
         callback();

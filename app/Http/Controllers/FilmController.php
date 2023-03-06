@@ -22,7 +22,7 @@ class FilmController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(FilmRequest $request)
@@ -36,7 +36,7 @@ class FilmController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Film  $film
+     * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -47,8 +47,8 @@ class FilmController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Film  $film
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response
      */
     public function update(FilmRequest $request, Film $film)
@@ -64,7 +64,7 @@ class FilmController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Film  $film
+     * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response
      */
     public function destroy(Film $film)

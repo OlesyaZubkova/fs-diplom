@@ -31,4 +31,4 @@ class CreateSeatsTable extends Migration
     {
         Schema::dropIfExists('seats');
     }
-};
+}

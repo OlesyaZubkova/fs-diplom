@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import getNoun from "../wordsEndings/minEnd";
 
-export default function MovieInfo(props)
-{
-    const { films } = useSelector((state) => state.calendar);
-    const { id } = props;
+export default function MovieInfo(props) {
+    const {films} = useSelector((state) => state.calendar);
+    const {id} = props;
     const film = films.find((film) => film.id === id);
     const defineEnd = getNoun(film.duration);
 

@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createHall, getHalls, updateHall } from "../../../reducers/createAdminSlice";
-import { closePopup } from "../../../reducers/createPopupSlice";
+import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {createHall, getHalls, updateHall} from "../../../reducers/createAdminSlice";
+import {closePopup} from "../../../reducers/createPopupSlice";
 import AcceptBtn from "../Buttons/acceptBtn";
 
-export default function AddHall(props)
-{
+export default function AddHall(props) {
     const dispatch = useDispatch();
     const {edit} = props;
 

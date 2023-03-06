@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import {useEffect, useRef} from "react";
 import QRCode from "qrcode";
 
 export default function TicketQRCode(props) {

@@ -1,10 +1,9 @@
-import { useState } from "react";
+import {useState} from "react";
 import classnames from 'classnames';
 
-export default function SeanceSeatStatus(props)
-{
-    const { status, callback } = props;
-    const [ taken, setTaken ] = useState(0);
+export default function SeanceSeatStatus(props) {
+    const {status, callback} = props;
+    const [taken, setTaken] = useState(0);
 
     const handleClick = () => {
         setTaken(!taken);

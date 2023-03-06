@@ -7,8 +7,7 @@ import SessionGrid from "./AdminPanel/sessionGrid";
 import OpenSales from "./AdminPanel/openSales";
 import Popup from "./Popup";
 
-export default function Main()
-{
+export default function Main() {
     return (
         <>
             <Popup/>

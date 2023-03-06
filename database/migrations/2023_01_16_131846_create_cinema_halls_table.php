@@ -29,4 +29,4 @@ class CreateCinemaHallsTable extends Migration
     {
         Schema::dropIfExists('cinema_halls');
     }
-};
+}

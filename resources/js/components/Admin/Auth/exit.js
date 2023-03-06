@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../reducers/createAuthSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../../reducers/createAuthSlice";
 
-export default function Exit()
-{
+export default function Exit() {
     const {token} = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 

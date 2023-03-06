@@ -22,7 +22,7 @@ class SessionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(SessionRequest $request)
@@ -33,7 +33,7 @@ class SessionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Session  $session
+     * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
     public function show($datetime)
@@ -45,8 +45,8 @@ class SessionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Session  $session
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
     public function update(SessionRequest $request, Session $session)
@@ -58,7 +58,7 @@ class SessionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Session  $session
+     * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
     public function destroy(Session $session)

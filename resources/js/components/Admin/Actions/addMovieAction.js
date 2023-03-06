@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getMovies } from "../../../reducers/createAdminSlice";
-import { showPopup } from "../../../reducers/createPopupSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getMovies} from "../../../reducers/createAdminSlice";
+import {showPopup} from "../../../reducers/createPopupSlice";
 import Button from "../Buttons/btn";
 import EditMovieAction from "./editMovieAction";
 
 export default function AddMovieAction() {
-    const { movies } = useSelector((state) => state.admin);
+    const {movies} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     useEffect(() => {

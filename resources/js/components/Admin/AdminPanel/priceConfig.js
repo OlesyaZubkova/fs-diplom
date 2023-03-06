@@ -1,13 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { getHalls, updateHall } from "../../../reducers/createAdminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useState} from "react";
+import {getHalls, updateHall} from "../../../reducers/createAdminSlice";
 import ActionBtn from "../Buttons/actionBtn";
 import ChooseHallBtn from "../Buttons/chooseHallBtn";
 import SeatStatus from "../Seats/seatStatus";
 
-export default function PriceConfig()
-{
-    const { cinemaHalls } = useSelector((state) => state.admin);
+export default function PriceConfig() {
+    const {cinemaHalls} = useSelector((state) => state.admin);
     const [selectedCinemaHall, setSelectedCinemaHall] = useState(null);
     const dispatch = useDispatch();
 
@@ -43,31 +42,31 @@ export default function PriceConfig()
 
             {selectedCinemaHall &&
                 <>
-                <p className="conf-step__paragraph">Установите цены для типов кресел:</p>
-                <div className="conf-step__legend">
-                    <label className="conf-step__label">Цена, рублей
-                        <input type="text"
-                               className="conf-step__input"
-                               name="price_standard"
-                               value={selectedCinemaHall.price_standard}
-                               onChange={handleChange}
-                    />
-                    </label>
-                    за <SeatStatus status={"standard"}/> обычные кресла
-                </div>
-                <div className="conf-step__legend">
-                    <label className="conf-step__label">Цена, рублей
-                        <input type="text"
-                               className="conf-step__input"
-                               name="price_vip"
-                               value={selectedCinemaHall.price_vip}
-                               onChange={handleChange}
-                        />
-                    </label>
-                    за <SeatStatus status={"vip"}/> VIP кресла
-                </div>
+                    <p className="conf-step__paragraph">Установите цены для типов кресел:</p>
+                    <div className="conf-step__legend">
+                        <label className="conf-step__label">Цена, рублей
+                            <input type="text"
+                                   className="conf-step__input"
+                                   name="price_standard"
+                                   value={selectedCinemaHall.price_standard}
+                                   onChange={handleChange}
+                            />
+                        </label>
+                        за <SeatStatus status={"standard"}/> обычные кресла
+                    </div>
+                    <div className="conf-step__legend">
+                        <label className="conf-step__label">Цена, рублей
+                            <input type="text"
+                                   className="conf-step__input"
+                                   name="price_vip"
+                                   value={selectedCinemaHall.price_vip}
+                                   onChange={handleChange}
+                            />
+                        </label>
+                        за <SeatStatus status={"vip"}/> VIP кресла
+                    </div>
 
-                <ActionBtn cancel={() => setSelectedCinemaHall(null)} save={() => handleSave()}/>
+                    <ActionBtn cancel={() => setSelectedCinemaHall(null)} save={() => handleSave()}/>
                 </>
             }
         </div>

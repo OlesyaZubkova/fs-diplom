@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { closePopup } from "../../../reducers/createPopupSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {closePopup} from "../../../reducers/createPopupSlice";
 import close from "../../Images/close.png";
 import classNames from "classnames";
 import AddHall from "../HallsPopup/addHall";
@@ -11,9 +11,8 @@ import DeleteSeance from "../SeancePopup/deleteSeance";
 import EditMovie from "../MoviePopup/editMovie";
 import EditSeance from "../SeancePopup/editSeance";
 
-export default function Popup()
-{
-    const { active, title, form } = useSelector((state) => state.popup);
+export default function Popup() {
+    const {active, title, form} = useSelector((state) => state.popup);
     const dispatch = useDispatch();
 
     return (

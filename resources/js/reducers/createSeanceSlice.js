@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     session: {},
@@ -32,14 +32,14 @@ const createSeanceSlice = createSlice({
             return initialState
         },
         createTicket: (state, action) => {
-            const { seanceId, seats, cost } = action.payload;
+            const {seanceId, seats, cost} = action.payload;
             state.ticket = {seanceId, seats, cost};
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(getSeance.fulfilled, (state, action) => {
-                const { session, seats } = action.payload;
+                const {session, seats} = action.payload;
                 state.session = session;
                 state.seats = seats;
             })
@@ -50,5 +50,5 @@ const createSeanceSlice = createSlice({
     },
 });
 
-export const { createTicket, resetSeance } = createSeanceSlice.actions;
+export const {createTicket, resetSeance} = createSeanceSlice.actions;
 export default createSeanceSlice.reducer;

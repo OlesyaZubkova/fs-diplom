@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     token: "",
@@ -41,5 +41,5 @@ const createAuthSlice = createSlice({
     },
 });
 
-export const { logout, resetAuthStatus } = createAuthSlice.actions;
+export const {logout, resetAuthStatus} = createAuthSlice.actions;
 export default createAuthSlice.reducer;

@@ -1,14 +1,13 @@
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import SeanceSeatStatus from "./seanceSeatStatus";
 
-export default function BuyingScheme(props)
-{
-    const { callback } = props;
-    const { session, seats } = useSelector((state) => state.seance);
+export default function BuyingScheme(props) {
+    const {callback} = props;
+    const {session, seats} = useSelector((state) => state.seance);
     const chairs = seats.length / session.row;
 
     const rowSeats = seats.reduce((result, seat, i) => {
-        const index = Math.floor( i / chairs);
+        const index = Math.floor(i / chairs);
 
         if (!result[index]) {
             result[index] = [];

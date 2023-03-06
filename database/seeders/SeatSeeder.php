@@ -30,7 +30,7 @@ class SeatSeeder extends Seeder
                     'number' => $num,
                     'status' => $status,
                     'cinema_hall_id' => $h,
-                    ]);
+                ]);
             }
         }
     }

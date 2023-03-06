@@ -1,10 +1,9 @@
-import { useDispatch, useSelector } from "react-redux";
-import { showPopup } from "../../../reducers/createPopupSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {showPopup} from "../../../reducers/createPopupSlice";
 
-export default function MovieTime(props)
-{
-    const { movies } = useSelector((state) => state.admin);
-    const { id, seance, time } = props;
+export default function MovieTime(props) {
+    const {movies} = useSelector((state) => state.admin);
+    const {id, seance, time} = props;
     const dispatch = useDispatch();
 
     const index = movies.findIndex((movie) => movie.id === +id);
@@ -18,9 +17,6 @@ export default function MovieTime(props)
             className={`conf-step__seances-movie conf-step__seances-movie-${index + 1}`}
             style={{width: `${width}px`, left: `${shift}px`}}
             onClick={() => dispatch(showPopup({title: "Редактирование сеанса", form: "editSeance", id: seance}))}>
-
-            {/*<div className="conf-step__close"/>*/}
-
             <p className="conf-step__seances-movie-title">{movie.title}</p>
             <p className="conf-step__seances-movie-start">{datetime.toLocaleTimeString('ru-RU', {
                 hour: '2-digit',

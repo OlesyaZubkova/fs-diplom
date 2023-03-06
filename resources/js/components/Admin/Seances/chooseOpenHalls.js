@@ -1,6 +1,5 @@
-export default function ChooseOpenHalls(props)
-{
-    const { id, name, free, callback } = props;
+export default function ChooseOpenHalls(props) {
+    const {id, name, free, callback} = props;
 
     return (
         <>

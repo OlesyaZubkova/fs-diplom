@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 
 const today = new Date();
 const initialState = {
@@ -18,7 +18,7 @@ export const getHalls = createAsyncThunk(
             headers: {"Authorization": `Bearer ${token}`},
         });
         return await response.json();
-});
+    });
 
 export const createHall = createAsyncThunk(
     "admin/createHall",
@@ -52,7 +52,7 @@ export const deleteHall = createAsyncThunk(
 
 export const updateHall = createAsyncThunk(
     "admin/updateHall",
-    async (cinemaHall,{getState}) => {
+    async (cinemaHall, {getState}) => {
         const {token} = getState().auth;
         const response = await fetch(`/api/cinemaHall/${cinemaHall.id}`, {
             method: "PUT",
@@ -74,7 +74,7 @@ export const getSeats = createAsyncThunk(
             headers: {"Authorization": `Bearer ${token}`},
         });
         return await response.json();
-});
+    });
 
 export const createSeats = createAsyncThunk(
     "admin/createSeats",
@@ -284,5 +284,11 @@ const createAdminSlice = createSlice({
     },
 });
 
-export const { createScheme, selectCinemaHallScheme, changeHallSize, changeSeatStatus, chooseDate } = createAdminSlice.actions;
+export const {
+    createScheme,
+    selectCinemaHallScheme,
+    changeHallSize,
+    changeSeatStatus,
+    chooseDate
+} = createAdminSlice.actions;
 export default createAdminSlice.reducer;

@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 import MovieSeance from "./movieSeance";
 
-export default function MovieHall(props)
-{
-    const { cinemaHalls } = useSelector((state) => state.calendar);
-    const { cinemaHallId, filmId } = props;
+export default function MovieHall(props) {
+    const {cinemaHalls} = useSelector((state) => state.calendar);
+    const {cinemaHallId, filmId} = props;
     const cinemaHall = cinemaHalls.find((cinemaHall) => cinemaHall.id === cinemaHallId);
     const cinemaHallSeances = cinemaHall.sessions.filter((session) => +session.film_id === filmId);
 

@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { chooseDate } from "../../../reducers/createCalendarSlice";
+import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {chooseDate} from "../../../reducers/createCalendarSlice";
 import Navigation from "./index";
 
-export default function Navigate()
-{
+export default function Navigate() {
     const [start, setStart] = useState(new Date());
     const {chosenDate} = useSelector((state) => state.calendar);
     const dispatch = useDispatch();
@@ -28,15 +27,15 @@ export default function Navigate()
     return (
         <nav className="page-nav">
             {start.setHours(0, 0, 0, 0) === today.setHours(0, 0, 0, 0) ||
-            <a
-                className="page-nav__day page-nav__day_prev" onClick={() => handleStart(start, -6)} href="#">
-            </a>}
+                <a
+                    className="page-nav__day page-nav__day_prev" onClick={() => handleStart(start, -6)} href="#">
+                </a>}
             {days.map((day) =>
                 <Navigation
-                date={day}
-                chosen={chosenDate}
-                handleClick={() => handleClick(day)}
-                key={day}
+                    date={day}
+                    chosen={chosenDate}
+                    handleClick={() => handleClick(day)}
+                    key={day}
                 />
             )}
             <a

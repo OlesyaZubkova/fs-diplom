@@ -1,11 +1,10 @@
-import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getMovies } from "../../../reducers/createAdminSlice";
-import { closePopup } from "../../../reducers/createPopupSlice";
+import {useRef, useState} from "react";
+import {useDispatch} from "react-redux";
+import {getMovies} from "../../../reducers/createAdminSlice";
+import {closePopup} from "../../../reducers/createPopupSlice";
 import AcceptBtn from "../Buttons/acceptBtn";
 
-export default function MovieCard(props)
-{
+export default function MovieCard(props) {
     const {title = "", description = "", duration = "", country = "", poster, callbackSubmit, callbackDelete} = props;
     const INIT_STATE = {title, description, duration, country};
     const [form, setForm] = useState(INIT_STATE);

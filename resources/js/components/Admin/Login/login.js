@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { getToken, resetAuthStatus } from "../../../reducers/createAuthSlice";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {getToken, resetAuthStatus} from "../../../reducers/createAuthSlice";
 import Header from "../Header";
 
-export default function Login()
-{
+export default function Login() {
     const {status} = useSelector((state) => state.auth);
     const EMPTY_STATE = {mail: "", pwd: ""};
     const [loginForm, setLoginForm] = useState(EMPTY_STATE);

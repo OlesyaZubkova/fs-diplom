@@ -1,15 +1,14 @@
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { createTicket, getSeance } from "../../../reducers/createSeanceSlice";
+import {useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {createTicket, getSeance} from "../../../reducers/createSeanceSlice";
 import Main from "../Main";
 import SeanceInfo from "./seanceInfo";
 import BuyingScheme from "./buyingScheme";
 import Button from '../Button/btn';
 
-export default function MainSeance()
-{
-    const { session } = useSelector((state) => state.seance);
+export default function MainSeance() {
+    const {session} = useSelector((state) => state.seance);
     const seanceId = useParams().seanceId;
     const dispatch = useDispatch();
     const selectedSeats = [];
@@ -29,7 +28,7 @@ export default function MainSeance()
     }
 
     const submitHandle = () => {
-        const ticket = selectedSeats.reduce((res, seat) =>{
+        const ticket = selectedSeats.reduce((res, seat) => {
             res.seats.push(seat.id);
             res.cost += +seat.price;
             return res;

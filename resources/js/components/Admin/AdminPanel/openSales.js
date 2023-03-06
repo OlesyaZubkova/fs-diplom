@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { updateHall } from "../../../reducers/createAdminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect, useState} from "react";
+import {updateHall} from "../../../reducers/createAdminSlice";
 import ChooseOpenHalls from "../Seances/chooseOpenHalls";
 import Button from "../Buttons/btn";
 
-export default function OpenSales()
-{
+export default function OpenSales() {
     const {cinemaHalls} = useSelector((state) => state.admin);
     const [changedCinemaHalls, setChangedCinemaHalls] = useState([]);
     const dispatch = useDispatch();

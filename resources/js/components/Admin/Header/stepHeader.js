@@ -1,8 +1,7 @@
-import { useState } from "react";
+import {useState} from "react";
 import classNames from "classnames";
 
-export default function StepHeader(props)
-{
+export default function StepHeader(props) {
     const [opened, setOpened] = useState(true);
 
     return (

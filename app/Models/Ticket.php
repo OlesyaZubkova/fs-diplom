@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Ticket extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'session_id',
     ];

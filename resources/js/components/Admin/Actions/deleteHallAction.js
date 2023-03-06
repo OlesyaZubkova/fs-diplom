@@ -1,9 +1,8 @@
-import { useDispatch } from "react-redux";
-import { showPopup } from "../../../reducers/createPopupSlice";
+import {useDispatch} from "react-redux";
+import {showPopup} from "../../../reducers/createPopupSlice";
 
-export default function DeleteHallAction(props)
-{
-    const { id, name } = props;
+export default function DeleteHallAction(props) {
+    const {id, name} = props;
     const dispatch = useDispatch();
 
     return (

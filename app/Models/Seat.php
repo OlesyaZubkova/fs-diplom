@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Seat extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'number', 'status', 'cinema_hall_id',
     ];

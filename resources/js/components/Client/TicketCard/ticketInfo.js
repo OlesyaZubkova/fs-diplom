@@ -1,7 +1,7 @@
 import getNoun from "../wordsEndings/rubEnd";
 
 export default function TicketInfo(props) {
-    const { film, seats, cinemaHall, time, cost } = props;
+    const {film, seats, cinemaHall, time, cost} = props;
     const defineEnd = getNoun(cost);
     const datetime = new Date(time);
 
@@ -19,7 +19,8 @@ export default function TicketInfo(props) {
                     })}
                 </span>
             </p>
-            <p className="ticket__info">Стоимость: <span className="ticket__details ticket__cost">{cost}</span>{" "}{defineEnd}</p>
+            <p className="ticket__info">Стоимость: <span
+                className="ticket__details ticket__cost">{cost}</span>{" "}{defineEnd}</p>
         </>
     );
 }

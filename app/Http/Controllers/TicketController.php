@@ -13,14 +13,13 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(TicketRequest $request)
     {
         $ticket = Ticket::create($request->validated());
-        foreach ($request->validated()['seats'] as $seatId)
-        {
+        foreach ($request->validated()['seats'] as $seatId) {
             $seat = Seat::findOrFail($seatId);
             $ticket->seats()->save($seat);
         }
@@ -30,7 +29,7 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Ticket  $ticket
+     * @param \App\Models\Ticket $ticket
      * @return \Illuminate\Http\Response
      */
     public function show($id)

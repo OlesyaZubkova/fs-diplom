@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import MovieCard from "./components/Client/MovieCard";
 import SeanceCard from "./components/Client/SeanceCard";
 import MainPayment from "./components/Client/PaymentCard";
@@ -18,10 +18,10 @@ export default function App() {
                 <Route path="ticket" element={<MainTicket/>}/>
                 <Route path="admin/login" element={<Login/>}/>
                 <Route path="admin" element={
-                        <Auth>
-                            <Main/>
-                        </Auth>
-                    }/>
+                    <Auth>
+                        <Main/>
+                    </Auth>
+                }/>
             </Routes>
         </BrowserRouter>
     );

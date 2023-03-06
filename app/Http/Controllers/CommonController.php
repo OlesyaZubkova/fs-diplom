@@ -51,7 +51,7 @@ class CommonController extends Controller
                 'cinema_halls.price_vip',
             )->first();
 
-        $tickets = Seat::has('tickets')->whereHas('tickets', function(Builder $query) use ($sessionId) {
+        $tickets = Seat::has('tickets')->whereHas('tickets', function (Builder $query) use ($sessionId) {
             $query->where('session_id', $sessionId);
         })->get();
 
@@ -62,10 +62,7 @@ class CommonController extends Controller
                 $seat->status = 'sold';
             }
         }
-
         return ["session" => $session, "seats" => $seats];
-
     }
-
 }
 

@@ -1,9 +1,8 @@
-import { useDispatch } from "react-redux";
-import { createMovie } from "../../../reducers/createAdminSlice";
+import {useDispatch} from "react-redux";
+import {createMovie} from "../../../reducers/createAdminSlice";
 import MovieCard from "../Cards/movieCard";
 
-export default function AddMovie()
-{
+export default function AddMovie() {
     const dispatch = useDispatch();
 
     return (

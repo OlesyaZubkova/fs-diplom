@@ -1,8 +1,7 @@
 import classNames from "classnames";
 
-export default function Navigation(props)
-{
-    const { handleClick } = props;
+export default function Navigation(props) {
+    const {handleClick} = props;
     const week = [
         'Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'
     ];

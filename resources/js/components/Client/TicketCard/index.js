@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { buyTicket, resetSeance } from "../../../reducers/createSeanceSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {buyTicket, resetSeance} from "../../../reducers/createSeanceSlice";
 import Main from "../Main";
 import TicketHeader from "../Header/ticketHeader";
 import TicketInfo from "./ticketInfo";
 import TicketQRCode from "./qrcode";
 
 export default function MainTicket() {
-    const { session, seats, ticket } = useSelector((state) => state.seance);
+    const {session, seats, ticket} = useSelector((state) => state.seance);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const seatsNum = seats.filter((seat) => ticket.seats.includes(seat.id)).map((seat) => seat.number);

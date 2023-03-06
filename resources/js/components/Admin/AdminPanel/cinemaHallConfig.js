@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {
     createScheme,
     selectCinemaHallScheme,
@@ -14,9 +14,8 @@ import ChooseHallBtn from "../Buttons/chooseHallBtn";
 import SeatStatus from "../Seats/seatStatus";
 import SeatsScheme from "../Seats/seatsScheme";
 
-export default function CinemaHallConfig()
-{
-    const { cinemaHalls, selectedCinemaHallScheme } = useSelector((state) => state.admin);
+export default function CinemaHallConfig() {
+    const {cinemaHalls, selectedCinemaHallScheme} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
 
     const handleSelect = (id) => {

@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { closePopup, showPopup } from "../../../reducers/createPopupSlice";
-import { getSeances } from "../../../reducers/createAdminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {useState} from "react";
+import {closePopup, showPopup} from "../../../reducers/createPopupSlice";
+import {getSeances} from "../../../reducers/createAdminSlice";
 import AcceptBtn from "../Buttons/acceptBtn";
 
-export default function SeanceCard(props)
-{
+export default function SeanceCard(props) {
     const {cinemaHalls, movies} = useSelector((state) => state.admin);
     const {cinema_hall_id, film_id, date, time, callbackSubmit, callbackDelete} = props;
     const today = new Date();

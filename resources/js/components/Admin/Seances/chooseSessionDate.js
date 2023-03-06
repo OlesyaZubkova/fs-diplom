@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import { chooseDate } from "../../../reducers/createAdminSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {chooseDate} from "../../../reducers/createAdminSlice";
 
-export default function ChooseSessionDate()
-{
+export default function ChooseSessionDate() {
     const {chosenDate} = useSelector((state) => state.admin);
     const dispatch = useDispatch();
     const today = new Date();
@@ -18,7 +17,7 @@ export default function ChooseSessionDate()
                     className="conf-step__input"
                     type="date"
                     name="datepicker"
-                    min={`${today.getFullYear()}-${('0' + (today.getMonth()+1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`}
+                    min={`${today.getFullYear()}-${('0' + (today.getMonth() + 1)).slice(-2)}-${('0' + today.getDate()).slice(-2)}`}
                     value={chosenDate}
                     onChange={handleChange}
                     pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"

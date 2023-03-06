@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Session extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'datetime', 'cinema_hall_id', 'film_id'
     ];
