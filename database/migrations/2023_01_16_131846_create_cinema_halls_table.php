@@ -13,8 +13,8 @@ class CreateCinemaHallsTable extends Migration
             $table->string('name');
             $table->integer('row')->default(0);
             $table->integer('chair')->default(0);
-            $table->integer('price_standard')->default(0);
-            $table->integer('price_vip')->default(0);
+            $table->integer('price_standard')->default(290);
+            $table->integer('price_vip')->default(410);
             $table->boolean('free')->default(false);
             $table->timestamps();
         });

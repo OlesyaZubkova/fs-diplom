@@ -14,7 +14,7 @@ class FilmController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): string
     {
         return Film::all();
     }
@@ -25,7 +25,7 @@ class FilmController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(FilmRequest $request)
+    public function store(FilmRequest $request): Response
     {
         $film = new Film;
         $film->fill($request->validated());
@@ -39,7 +39,7 @@ class FilmController extends Controller
      * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): Response
     {
         return Film::findOfFail($id);
     }
@@ -51,7 +51,7 @@ class FilmController extends Controller
      * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response
      */
-    public function update(FilmRequest $request, Film $film)
+    public function update(FilmRequest $request, Film $film): Response
     {
         if ($request->has('poster')) {
             Storage::delete($film->poster);
@@ -67,7 +67,7 @@ class FilmController extends Controller
      * @param \App\Models\Film $film
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Film $film)
+    public function destroy(Film $film): ?Response
     {
         if ($film->delete()) {
             return response(null, Response::HTTP_NO_CONTENT);

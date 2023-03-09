@@ -13,7 +13,7 @@ class CinemaHallController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): string
     {
         return CinemaHall::all();
     }
@@ -24,7 +24,7 @@ class CinemaHallController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CinemaHallRequest $request)
+    public function store(CinemaHallRequest $request): Response
     {
         return CinemaHall::create($request->validated());
     }
@@ -35,7 +35,7 @@ class CinemaHallController extends Controller
      * @param \App\Models\CinemaHall $cinemaHall
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): Response
     {
         return CinemaHall::findOfFail($id);
     }
@@ -47,7 +47,7 @@ class CinemaHallController extends Controller
      * @param \App\Models\CinemaHall $cinemaHall
      * @return \Illuminate\Http\Response
      */
-    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall)
+    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall): Response
     {
         $cinemaHall->fill($request->validated());
         return $cinemaHall->save();
@@ -59,7 +59,7 @@ class CinemaHallController extends Controller
      * @param \App\Models\CinemaHall $cinemaHall
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CinemaHall $cinemaHall)
+    public function destroy(CinemaHall $cinemaHall): ?Response
     {
         if ($cinemaHall->delete()) {
             return response(null, Response::HTTP_NO_CONTENT);

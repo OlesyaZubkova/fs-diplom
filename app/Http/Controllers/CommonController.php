@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 class CommonController extends Controller
 {
 
-    public function calendar(string $datetime)
+    public function calendar(string $datetime): array
     {
 
         $timeSeance = DateTime::createFromFormat('Y-m-d', $datetime)->format('Y-m-d');
@@ -35,7 +35,7 @@ class CommonController extends Controller
 
     // информация о сеансе
 
-    public function seatSelect(int $sessionId)
+    public function seatSelect(int $sessionId): array
     {
         $session = Session::where('sessions.id', $sessionId)
             ->join('cinema_halls', 'sessions.cinema_hall_id', '=', 'cinema_halls.id')

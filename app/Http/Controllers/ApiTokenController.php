@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiTokenController extends Controller
 {
-    public function createToken(Request $request)
+    public function createToken(Request $request): array
     {
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'string', 'email', 'max:255'],

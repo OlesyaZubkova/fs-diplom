@@ -16,10 +16,11 @@ class TicketController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TicketRequest $request)
+    public function store(TicketRequest $request): Response
     {
-        $ticket = Ticket::create($request->validated());
-        foreach ($request->validated()['seats'] as $seatId) {
+        $req = $request->validated();
+        $ticket = Ticket::create($req);
+        foreach ($req['seats'] as $seatId) {
             $seat = Seat::findOrFail($seatId);
             $ticket->seats()->save($seat);
         }
@@ -32,7 +33,7 @@ class TicketController extends Controller
      * @param \App\Models\Ticket $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): Response
     {
         return Ticket::whereId($id)->with('session')->with('seats')->first();
     }

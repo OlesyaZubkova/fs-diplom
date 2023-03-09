@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SessionRequest;
 use App\Models\Session;
 use DateTime;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 
 class SessionController extends Controller
@@ -14,7 +15,7 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): Response
     {
         return Session::all();
     }
@@ -25,7 +26,7 @@ class SessionController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SessionRequest $request)
+    public function store(SessionRequest $request): Response
     {
         return Session::create($request->validated());
     }
@@ -36,7 +37,7 @@ class SessionController extends Controller
      * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
-    public function show($datetime)
+    public function show($datetime): Collection
     {
         $timeSeance = DateTime::createFromFormat('Y-m-d', $datetime)->format('Y-m-d');
         return Session::whereDate('datetime', $timeSeance)->get();
@@ -49,7 +50,7 @@ class SessionController extends Controller
      * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
-    public function update(SessionRequest $request, Session $session)
+    public function update(SessionRequest $request, Session $session): Response
     {
         $session->fill($request->validated());
         return $session->save();
@@ -61,7 +62,7 @@ class SessionController extends Controller
      * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Session $session)
+    public function destroy(Session $session): ?Response
     {
         if ($session->delete()) {
             return response(null, Response::HTTP_NO_CONTENT);

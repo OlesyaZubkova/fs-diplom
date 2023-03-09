@@ -15,7 +15,7 @@ class SeatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): Response
     {
         return Seat::all();
     }
@@ -26,14 +26,15 @@ class SeatController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SeatRequest $request)
+    public function store(SeatRequest $request): Response
     {
-        $cinemaHallId = $request->validated()['seats'][0]['cinema_hall_id'];
+        $req = $request->validated();
+        $cinemaHallId = $req['seats'][0]['cinema_hall_id'];
         $cinemaHall = CinemaHall::findOrFail($cinemaHallId);
         Seat::whereCinemaHallId($cinemaHall->id)->delete();
         Session::whereCinemaHallId($cinemaHall->id)->delete();
 
-        foreach ($request->validated()['seats'] as $seat) {
+        foreach ($req['seats'] as $seat) {
             Seat::create($seat);
         }
         return response(true, 201);
@@ -45,7 +46,7 @@ class SeatController extends Controller
      * @param \App\Models\Seat $seat
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id): Response
     {
         return Seat::where('cinema_hall_id', $id)->get();
     }
@@ -57,9 +58,9 @@ class SeatController extends Controller
      * @param \App\Models\Seat $seat
      * @return \Illuminate\Http\Response
      */
-    public function updateMany(SeatRequest $request)
+    public function updateMany(SeatRequest $req): Response
     {
-        foreach ($request->validated()['seats'] as $seat) {
+        foreach ($req['seats'] as $seat) {
             $cinemaSeat = Seat::findOfFail($seat['id']);
             $cinemaSeat->fill($seat);
             $cinemaSeat->save();

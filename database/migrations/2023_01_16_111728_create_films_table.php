@@ -10,10 +10,10 @@ class CreateFilmsTable extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
+            $table->string('title', 235);
+            $table->string('description', 500);
             $table->integer('duration');
-            $table->string('country');
+            $table->string('country', 50);
             $table->string('poster');
             $table->timestamps();
         });
