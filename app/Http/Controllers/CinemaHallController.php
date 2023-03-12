@@ -24,7 +24,7 @@ class CinemaHallController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CinemaHallRequest $request): Response
+    public function store(CinemaHallRequest $request): CinemaHall
     {
         return CinemaHall::create($request->validated());
     }
@@ -47,7 +47,7 @@ class CinemaHallController extends Controller
      * @param \App\Models\CinemaHall $cinemaHall
      * @return \Illuminate\Http\Response
      */
-    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall): Response
+    public function update(CinemaHallRequest $request, CinemaHall $cinemaHall): bool
     {
         $cinemaHall->fill($request->validated());
         return $cinemaHall->save();

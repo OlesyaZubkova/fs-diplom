@@ -11,8 +11,8 @@ class CreateCinemaHallsTable extends Migration
         Schema::create('cinema_halls', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('row')->default(0);
-            $table->integer('chair')->default(0);
+            $table->integer('row')->nullable();
+            $table->integer('chair')->nullable();
             $table->integer('price_standard')->default(290);
             $table->integer('price_vip')->default(410);
             $table->boolean('free')->default(false);

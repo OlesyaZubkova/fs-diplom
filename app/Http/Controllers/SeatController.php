@@ -6,6 +6,7 @@ use App\Http\Requests\SeatRequest;
 use App\Models\Seat;
 use App\Models\CinemaHall;
 use App\Models\Session;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response;
 
 class SeatController extends Controller
@@ -46,7 +47,7 @@ class SeatController extends Controller
      * @param \App\Models\Seat $seat
      * @return \Illuminate\Http\Response
      */
-    public function show($id): Response
+    public function show($id): Collection
     {
         return Seat::where('cinema_hall_id', $id)->get();
     }

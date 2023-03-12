@@ -23,9 +23,9 @@ class FilmController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return bool
      */
-    public function store(FilmRequest $request): Response
+    public function store(FilmRequest $request): bool
     {
         $film = new Film;
         $film->fill($request->validated());
@@ -49,9 +49,9 @@ class FilmController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Film $film
-     * @return \Illuminate\Http\Response
+     * @return bool
      */
-    public function update(FilmRequest $request, Film $film): Response
+    public function update(FilmRequest $request, Film $film): bool
     {
         if ($request->has('poster')) {
             Storage::delete($film->poster);

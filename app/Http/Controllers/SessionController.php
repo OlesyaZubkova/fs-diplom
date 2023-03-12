@@ -26,7 +26,7 @@ class SessionController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SessionRequest $request): Response
+    public function store(SessionRequest $request): Session
     {
         return Session::create($request->validated());
     }
@@ -50,7 +50,7 @@ class SessionController extends Controller
      * @param \App\Models\Session $session
      * @return \Illuminate\Http\Response
      */
-    public function update(SessionRequest $request, Session $session): Response
+    public function update(SessionRequest $request, Session $session): bool
     {
         $session->fill($request->validated());
         return $session->save();
